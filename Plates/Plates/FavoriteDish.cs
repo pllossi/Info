@@ -139,7 +139,7 @@ namespace Plates
             bool resturantFound = false;
             if (resturant == null || resturant == " " || resturant == "")
             {
-                throw new Exception("Resturant name can't be null or blank");7
+                throw new Exception("Resturant name can't be null or blank");
             }
             Dish[] dishes = new Dish[_dishes.Length];
             for (int i = 0; i < _dishes.Length; i++)
