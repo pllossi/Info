@@ -32,7 +32,7 @@ namespace Plates
         public void sort()
         {
             //TODO
-            //NON HO IDEA DI COME SI FACCIA
+            //NON HO CAPITO LA FRASE
         }
         public Dish[] lessExpensiveForType()
         {
