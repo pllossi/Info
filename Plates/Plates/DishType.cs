@@ -8,10 +8,10 @@ namespace Plates
 {
     public enum DishType
     {
+        Appetizer,
         MainCourse,
         SecondCourse,
         SideCourse,
-        Appetizer,
         Dessert
     }
 }

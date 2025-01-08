@@ -19,8 +19,16 @@ namespace Plates
             {
                 if (_dishes[i] == null)
                 {
-                    _dishes[i] = dish;
-                    return;
+                    foreach(Dish realDish in _dishes)
+                    {
+                        if (realDish.Equals(dish)) 
+                            throw new Exception("Plate already saved");
+                        else
+                        {
+                            _dishes[i] = dish;
+                            return;
+                        }
+                    }
                 }
             }
             throw new Exception("No more space for dishes");
@@ -28,11 +36,6 @@ namespace Plates
         public void insertDish(string name, string resturant, int price, DishType dish)
         {
             insertDish(new Dish(name, resturant, price, dish));
-        }
-        public void sort()
-        {
-            //TODO
-            //NON HO CAPITO LA FRASE
         }
         public Dish[] lessExpensiveForType()
         {
@@ -105,7 +108,7 @@ namespace Plates
             lessExpensive[4] = _dishes[pos];
             return lessExpensive;
         }
-        public int resturantsThatHaveMoreThan1WorldInThereName()
+        public int resturantsMoreThan1World()
         {
             int count = 0;
             for (int i = 0; i < _dishes.Length; i++)
@@ -136,7 +139,7 @@ namespace Plates
             bool resturantFound = false;
             if (resturant == null || resturant == " " || resturant == "")
             {
-                throw new Exception("Resturant name can't be null or blank");
+                throw new Exception("Resturant name can't be null or blank");7
             }
             Dish[] dishes = new Dish[_dishes.Length];
             for (int i = 0; i < _dishes.Length; i++)

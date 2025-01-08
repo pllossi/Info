@@ -1,8 +1,6 @@
-﻿using System.Globalization;
-
-namespace Plates
+﻿namespace Plates
 {
-    public class Dish
+    public class Dish // : IComparable<Dish>
     {
         private string dishName;
         public string DishName
@@ -64,6 +62,10 @@ namespace Plates
             Price = price;
             TypeDish = dish;
         }
+
+        // da implementare IComparable
+
+
         public override bool Equals(object? obj)
         {
             if(obj is null)

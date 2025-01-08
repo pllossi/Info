@@ -18,10 +18,10 @@ for (int i = 0; i < plates; i++)
             Console.WriteLine("Insert the price of the dish");
             int price = int.Parse(Console.ReadLine());
             Console.WriteLine("Insert the type of the dish");
-            Console.WriteLine("1) MainCourse");
-            Console.WriteLine("2) SecondCourse");
-            Console.WriteLine("3) SideCourse");
-            Console.WriteLine("4) Appetizer");
+            Console.WriteLine("1) Appetizer");
+            Console.WriteLine("2) MainCourse");
+            Console.WriteLine("3) SecondCourse");
+            Console.WriteLine("4) SideCourse");
             Console.WriteLine("5) Dessert");
             DishType type = (DishType)int.Parse(Console.ReadLine());
             favoriteDish.insertDish(name, resturant, price, type);
@@ -39,7 +39,7 @@ for (int i = 0; i < lessExpensive.Length; i++)
 {
     Console.WriteLine(lessExpensive[i].DishName);
 }
-int numResturantNames = favoriteDish.resturantsThatHaveMoreThan1WorldInThereName();
+int numResturantNames = favoriteDish.resturantsMoreThan1World();
 Console.WriteLine("The number of resturants that have more than one word in their name is: " + numResturantNames);
 Dish longestName = favoriteDish.LongestName();
 Console.WriteLine("The dish with the longest name is: " + longestName.DishName);
