@@ -7,9 +7,13 @@
         mc:Ignorable="d"
         Title="Prenotazioni" Height="450" Width="800">
     <Grid>
-        <Button x:Name="btnPrenota" Content="Prenota" HorizontalAlignment="Center" Height="86" Margin="0,0,0,35" VerticalAlignment="Bottom" Width="256" Click="btnPrenota_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="198*"/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnPrenota" Content="Prenota" HorizontalAlignment="Center" Height="86" Margin="0,313,0,0" VerticalAlignment="Top" Width="256" Click="btnPrenota_Click" Grid.RowSpan="2"/>
         <Label x:Name="lblDatiRistorante" Content="Ristorante" Height="70" VerticalAlignment="Top"/>
-        <Label Content="Numero di coperti da prendere " HorizontalAlignment="Left" Margin="35,0,0,50" VerticalAlignment="Center"/>
-        <TextBox x:Name="txtNumeroCoperti" HorizontalAlignment="Left" Margin="244,179,0,0" TextWrapping="Wrap" Text="1-4" VerticalAlignment="Top" Height="26" Width="359" GotFocus="DeleteContent" FontSize="20"/>
+        <Label Content="Numero di coperti da prendere " HorizontalAlignment="Left" Margin="35,179,0,0" VerticalAlignment="Top"/>
+        <Slider x:Name="sldNumeroPosti" HorizontalAlignment="Left" Margin="314,183,0,0" VerticalAlignment="Top" Width="120" Maximum="4" Minimum="1" TickFrequency="1" TickPlacement="BottomRight" SmallChange="1" Interval="1"/>
     </Grid>
 </Window>

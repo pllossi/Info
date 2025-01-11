@@ -47,7 +47,7 @@ namespace RistoranteWPF
         {
             try
             {
-                int posti = int.Parse(txtNumeroCoperti.Text);
+                int posti = (int)sldNumeroPosti.TickPlacement;
                 if (posti > 1 && posti < 5)
                 {
                     ristorante.Prenota(posti);
