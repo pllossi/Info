@@ -29,6 +29,7 @@ namespace RistoranteWPF
          private void AggiornaDatiRistorante()
         {
             string datiRistorante = $"Ristorante " + ristorante.Nome + "\n" + "Tavoli Prenotati: " + ristorante.TavoliPrenotati + "\n" + "Coperti disponibili: " + ristorante.PostiLiberi;
+            lblDatiRistorante.Content = datiRistorante;
         }
 
         private void DeleteContent(object sender, RoutedEventArgs e)
@@ -47,8 +48,15 @@ namespace RistoranteWPF
             try
             {
                 int posti = int.Parse(txtNumeroCoperti.Text);
-                ristorante.Prenota(posti);
-                AggiornaDatiRistorante();
+                if (posti > 1 && posti < 5)
+                {
+                    ristorante.Prenota(posti);
+                    AggiornaDatiRistorante();
+                }
+                else
+                {
+                    throw new Exception("Il massimo di posti prenotabili devono essere almeno 1 e meno di 5");
+                }
             }
             catch (Exception ex)
             {
