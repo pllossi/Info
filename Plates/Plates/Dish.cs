@@ -1,91 +1,80 @@
 ﻿namespace Plates
 {
-    public class Dish // : IComparable<Dish>
+    public class Dish : IComparable<Dish>
     {
-        private string dishName;
-        public string DishName
+        public enum COURSE
         {
-            get
-            {
-                return dishName;
-            }
-            private set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new Exception("DishName has to have something, not empty");
-                }
-                dishName = value;
-            }
+            Appetizer,
+            First,
+            Second,
+            Side,
+            Dessert
         }
-
-        private string resturantName;
-        public string ResturantName
+        public string Name { get; private set; }
+        public COURSE Course { get; private set; }
+        public double Price { get; private set; }
+        public Restaurant Restaurant { get; private set; }
+        public Dish(string name, COURSE course, double price, Restaurant restaurant)
         {
-            get
+            if (string.IsNullOrEmpty(name))
             {
-                return resturantName;
+                throw new ArgumentNullException(nameof(name), "name cant be null or empty.");
             }
-            private set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new Exception("ResturantName has to have something, not empty");
-                }
-                resturantName = value;
-            }
-        }
 
-        private int price;
-        public int Price
-        {
-            get
+            if (price < 0.0)
             {
-                return price;
+                throw new ArgumentOutOfRangeException(nameof(price), "price cant be negative.");
             }
-            private set
+
+            if (string.IsNullOrEmpty(restaurant.Name))
             {
-                if (value <= 0)
-                {
-                    throw new Exception("Price must be greater than zero");
-                }
-                price = value;
+                throw new ArgumentNullException(nameof(restaurant.Name), "restaurant cant be null.");
             }
-        }
 
-        public DishType TypeDish { get; private set; }
+            if (!Enum.IsDefined(typeof(COURSE), course))
+            {
+                throw new ArgumentException("Invalid type of course", nameof(course));
+            }
 
-        public Dish(string name, string resturant, int price, DishType dish)
-        {
-            DishName = name;
-            ResturantName = resturant;
+            Name = name;
+            Course = course;
             Price = price;
-            TypeDish = dish;
+            Restaurant = restaurant;
         }
 
-        // da implementare IComparable
+        public int CompareTo(Dish? Other)
+        {
+            if (Other == null)
+            {
+                return 1;
+            }
 
+            if (Course.CompareTo(Other.Course) != 0)
+            {
+                return Course.CompareTo(Other.Course);
+            }
+            else
+            {
+                return Name.CompareTo(Other.Name) != 0 ? Name.CompareTo(Other.Name) : Name.CompareTo(Other.Price);
+            }
+        }
 
         public override bool Equals(object? obj)
         {
-            if(obj is null)
+            if (obj is not Dish)
             {
                 return false;
             }
-            if(obj is not Dish)
+
+            if (obj == null)
             {
                 return false;
             }
-            Dish objDish = obj as Dish;
-            if (objDish.DishName == dishName)
-            { 
-                if(objDish.Price == price)
-                {
-                    if (objDish.ResturantName == resturantName)
-                        return true;
-                }
-            }
-            return false;
+
+            Dish other = (Dish)obj;
+            return Name.Equals(other.Name) &&
+                   Restaurant.Name.CompareTo(other.Restaurant.Name) == 0;
         }
+        public override int GetHashCode() => throw new NotImplementedException();
     }
 }
