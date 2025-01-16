@@ -8,7 +8,7 @@
         Title="Prenotazioni" Height="450" Width="800">
     <Grid>
         <Button x:Name="btnPrenota" Content="Prenota" HorizontalAlignment="Left" Height="86" Margin="90,278,0,0" VerticalAlignment="Top" Width="256" Click="btnPrenota_Click"/>
-        <Label x:Name="lblDatiRistorante" Content="Ristorante" Height="70" VerticalAlignment="Top"/>
+        <Label x:Name="lblDatiRistorante" Content="Ristorante" Height="100" VerticalAlignment="Top"/>
         <Label Content="Numero di coperti da prendere " HorizontalAlignment="Left" Margin="35,179,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPrenotazione" Content="" Margin="431,286,79,40"/>
         <TextBox x:Name="txtNumeroCoperti" HorizontalAlignment="Left" Margin="244,179,0,0" TextWrapping="Wrap" Text="1-4" VerticalAlignment="Top" Height="26" Width="359" GotFocus="DeleteContent" FontSize="20"/>

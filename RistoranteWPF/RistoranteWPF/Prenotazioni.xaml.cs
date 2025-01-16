@@ -28,7 +28,7 @@ namespace RistoranteWPF
         }
          private void AggiornaDatiRistorante()
         {
-            string datiRistorante = $"Ristorante " + ristorante.Nome + "\n" +"Tavoli occupati" + ristorante.TavoliPrenotati + "\n" + "Tavoli Prenotati: " + ristorante.TavoliPrenotati + "\n" + "Coperti disponibili: " + ristorante.PostiLiberi;
+            string datiRistorante = $"Ristorante " + ristorante.Nome + "\n" +"Tavoli liberi: " + ristorante.TavoliLiberi + "\n" + "Tavoli Prenotati: " + ristorante.TavoliPrenotati + "\n" + "Coperti disponibili: " + ristorante.PostiLiberi;
             lblDatiRistorante.Content = datiRistorante;
         }
 
@@ -52,7 +52,7 @@ namespace RistoranteWPF
                 {
                     int prenota=ristorante.Prenota(posti);
                     AggiornaDatiRistorante();
-                    lblPrenota.Content = "Prenotazione andata a buon fine \n Lei ha prenotato il tavolo " + prenota;
+                    lblPrenotazione.Content = "Prenotazione andata a buon fine \n Lei ha prenotato il tavolo " + (prenota+1);
                 }
                 else
                 {
