@@ -88,8 +88,9 @@ namespace RistoranteWPF
         }
 
 
-        public void Prenota(int posti)
+        public int Prenota(int posti)
         {
+            int tavolo = 0;
             bool assegnati = false;
             if (posti > PostiLiberi) throw new Exception("Non abbiamo abbastanza posti");
             for (int i = 0; i < _postiTavoli.Length; i++)
@@ -98,12 +99,14 @@ namespace RistoranteWPF
                 {
                     assegnati = true;
                     _postiTavoli[i] = posti;
+                    tavolo = i;
                 }
             }
             if (!assegnati)
             {
                 throw new Exception("I tavoli sono tutti occupati");
             }
+            return tavolo;
         }
 
         public override string ToString()

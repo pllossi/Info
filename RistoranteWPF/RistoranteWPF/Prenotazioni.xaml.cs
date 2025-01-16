@@ -28,7 +28,7 @@ namespace RistoranteWPF
         }
          private void AggiornaDatiRistorante()
         {
-            string datiRistorante = $"Ristorante " + ristorante.Nome + "\n" + "Tavoli Prenotati: " + ristorante.TavoliPrenotati + "\n" + "Coperti disponibili: " + ristorante.PostiLiberi;
+            string datiRistorante = $"Ristorante " + ristorante.Nome + "\n" +"Tavoli occupati" + ristorante.TavoliPrenotati + "\n" + "Tavoli Prenotati: " + ristorante.TavoliPrenotati + "\n" + "Coperti disponibili: " + ristorante.PostiLiberi;
             lblDatiRistorante.Content = datiRistorante;
         }
 
@@ -47,11 +47,12 @@ namespace RistoranteWPF
         {
             try
             {
-                int posti = (int)sldNumeroPosti.TickPlacement;
+                int posti = int.Parse(txtNumeroCoperti.Text);
                 if (posti > 1 && posti < 5)
                 {
-                    ristorante.Prenota(posti);
+                    int prenota=ristorante.Prenota(posti);
                     AggiornaDatiRistorante();
+                    lblPrenota.Content = "Prenotazione andata a buon fine \n Lei ha prenotato il tavolo " + prenota;
                 }
                 else
                 {
@@ -60,7 +61,7 @@ namespace RistoranteWPF
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Errore:{ex.Message}", "Errore nella prenotazione");
+                MessageBox.Show("Non ci sono più tavoli");
             }
         }
     }
