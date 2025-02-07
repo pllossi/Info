@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Carabinieri.Caserma">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gACAAAAAAAAAAAAAgAAAAAAAACAAAAAAAAIAAAkAIAg=</HashCode>
+      <FileName>Caserma.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Posizione" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Carabinieri.Posizione">
+    <Position X="5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Posizione.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Carabinieri.Carabiniere">
+    <Position X="3.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Carabiniere.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Carabinieri.Multa">
+    <Position X="6.75" Y="3.5" Width="2.25" />
+    <AssociationLine Name="Veicolo" Type="Carabinieri.Veicolo" ManuallyRouted="true">
+      <Path>
+        <Point X="7.266" Y="3.5" />
+        <Point X="7.266" Y="2.217" />
+        <Point X="8.542" Y="2.217" Type="JumpStart" />
+        <Point X="8.708" Y="2.217" Type="JumpEnd" />
+        <Point X="12.25" Y="2.217" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ABQBAAAAAAAAAAQgAEQAABAgABAAABAAAAIEAAAACAA=</HashCode>
+      <FileName>Multa.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="StatoMulta" />
+      <Property Name="Intestatario" />
+      <Property Name="Carabiniere" />
+      <Property Name="Veicolo" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Left" Position="0.321" />
+  </Class>
+  <Class Name="Carabinieri.Veicolo">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Veicolo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Carabinieri.Intestatario">
+    <Position X="12.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAgBAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Intestatario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Posizione" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="Carabinieri.StatoEnum">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAABABAAAgA=</HashCode>
+      <FileName>StatoEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
