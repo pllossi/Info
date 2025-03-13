@@ -1,0 +1,15 @@
+﻿<Window x:Class="Numbers.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Numbers"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="lblInizio" Content="Welcome to Guess the Number" HorizontalAlignment="Center" Margin="0,44,0,0" VerticalAlignment="Top" Height="30" Width="218" FontSize="15"/>
+        <Button x:Name="btnStart" Content="START PLAYING" HorizontalAlignment="Left" Height="115" Margin="277,122,0,0" VerticalAlignment="Top" Width="232" FontSize="28" Click="btnStart_Click"/>
+        <Button x:Name="btnSettings" Content="Change Settings" HorizontalAlignment="Left" Height="50" Margin="277,275,0,0" VerticalAlignment="Top" Width="232" Click="Button_Click"/>
+
+    </Grid>
+</Window>
