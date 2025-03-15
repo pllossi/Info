@@ -1,21 +1,21 @@
-Matrice(7xY)
-Y--> N negozio
-matrice[3,4]=Incasso
-interfaccia WPF:
-	Incassi(Windows 2):
-		Selezione giorno
-		Selezione Negozio(se son bravo via nome)
-		Inserzione Incasso(float)
-	Negozi(Windows 1):
-		N negozi(int)
-		Associa Nome a Negozio(se voglio in altre faccie)
-		N negozi(Dopo inserisci e nomi)
-		incassoTotale(Dopo inserisci e nomi)
-		migliorRisultato(per ogni giorno il negozio con incasso maggiore)
-		btnAggiungiClassi
-		btnStat
-	Statischice(Windows 3):
-		Selezione Negozio
-		IncassoTot(print)
-		Giorno di chiusura(print)
-		IncassoMedioGiorn(print)
+Matrice(7xY)<br>
+Y--> N negozio<br>
+matrice[3,4]=Incasso<br>
+interfaccia WPF:<br>
+	Incassi(Windows 2):<br>
+		Selezione giorno<br>
+		Selezione Negozio(se son bravo via nome)<br>
+		Inserzione Incasso(float)<br>
+	Negozi(Windows 1):<br>
+		N negozi(int)<br>
+		Associa Nome a Negozio(se voglio in altre faccie)<br>
+		N negozi(Dopo inserisci e nomi)<br>
+		incassoTotale(Dopo inserisci e nomi)<br>
+		migliorRisultato(per ogni giorno il negozio con incasso maggiore)<br>
+		btnAggiungiClassi<br>
+		btnStat<br>
+	Statischice(Windows 3):<br>
+		Selezione Negozio<br>
+		IncassoTot(print)<br>
+		Giorno di chiusura(print)<br>
+		IncassoMedioGiorn(print)<br>
