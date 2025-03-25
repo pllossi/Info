@@ -1,8 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using GestioneNegozi;
 using System.Windows;
-using System.Windows.Controls;
-using GestioneNegozi;
 
 namespace GestioneNegoziWPF
 {
@@ -15,30 +12,18 @@ namespace GestioneNegoziWPF
             InitializeComponent();
         }
 
-        private void ConfermaNumeroNegozi_Click(object sender, RoutedEventArgs e)
+        private void ApriNegozi_Click(object sender, RoutedEventArgs e)
         {
-            int numeroNegozi;
-            if (int.TryParse(NumeroNegoziTextBox.Text, out numeroNegozi))
-            {
-                NegoziItemsControl.Items.Clear();
-                for (int i = 0; i < numeroNegozi; i++)
-                {
-                    NegoziItemsControl.Items.Add(new TextBox());
-                }
-                NumeroNegoziTextBlock.Text = $"Numero di Negozi: {numeroNegozi}";
-            }
-            else
-            {
-                MessageBox.Show("Inserisci un numero valido.");
-            }
+            var negoziWindow = new NegoziWindow();
+            negoziWindow.Show();
         }
 
-        private void Statistiche_Click(object sender, RoutedEventArgs e)
+        private void ApriIncassi_Click(object sender, RoutedEventArgs e)
         {
             if (_negozi != null)
             {
-                double? incassoTotale = _negozi.IncassoTotale();
-                IncassoTotaleTextBlock.Text = $"Incasso Totale: {incassoTotale}";
+                var incassiWindow = new IncassiWindow(_negozi);
+                incassiWindow.Show();
             }
             else
             {
@@ -46,43 +31,16 @@ namespace GestioneNegoziWPF
             }
         }
 
-        private void AggiungiIncassi_Click(object sender, RoutedEventArgs e)
+        private void ApriStatistiche_Click(object sender, RoutedEventArgs e)
         {
             if (_negozi != null)
             {
-                // Logica per aggiungere incassi
-                // Esempio: _negozi.InserisciIncasso(0, 0, 100.0);
+                var statisticheWindow = new StatisticheWindow(_negozi);
+                statisticheWindow.Show();
             }
             else
             {
                 MessageBox.Show("Devi prima inserire i negozi.");
-            }
-        }
-
-        private void Statistich_Click(object sender, RoutedEventArgs e)
-        {
-            // Logica per visualizzare altre statistiche
-        }
-
-        private void ConfermaNomiNegozi_Click(object sender, RoutedEventArgs e)
-        {
-            int numeroNegozi = NegoziItemsControl.Items.Count;
-            string[] nomiNegozi = new string[numeroNegozi];
-
-            for (int i = 0; i < numeroNegozi; i++)
-            {
-                TextBox textBox = (TextBox)NegoziItemsControl.Items[i];
-                nomiNegozi[i] = textBox.Text;
-            }
-
-            try
-            {
-                _negozi = new Negozi(numeroNegozi, nomiNegozi);
-                MessageBox.Show("Negozi inseriti con successo.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
     }
