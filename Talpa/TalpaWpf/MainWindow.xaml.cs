@@ -74,6 +74,7 @@ namespace TalpaWpf
                 {
                     button.Content = "X";
                     MessageBox.Show($"Nessuna talpa in {x},{y}. Tentativi: {campoDaGioco.GetTentativi()}");
+                    button.IsEnabled = false;
                 }
             }
         }

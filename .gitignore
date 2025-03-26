@@ -363,5 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 
-# per gli zip
+# Zipped files generated to upload to classroom
 *.zip
