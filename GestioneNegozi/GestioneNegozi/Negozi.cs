@@ -135,10 +135,13 @@ namespace GestioneNegozi
             {
                 throw new System.Exception("Negozio non valido");
             }
-            double? totale = 0;
+            double totale = 0;
             for (int i = 0; i < 7; i++)
             {
-                totale += _incassi[i, Array.IndexOf(_nomi, negozio)];
+                if (_incassi[i, Array.IndexOf(_nomi, negozio)]!=null)
+                {
+                    totale += (double)_incassi[i, Array.IndexOf(_nomi, negozio)];
+                }
             }
             return totale;
         }

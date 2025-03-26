@@ -13,8 +13,6 @@
             <Button Content="Conferma Nomi Negozi" Click="ConfermaNomiNegozi_Click" />
 
             <Button Content="Visualizza Statistiche" Click="Statistiche_Click" />
-            <TextBlock x:Name="IncassoTotaleTextBlock" />
-            <TextBlock x:Name="MigliorRisultatoTextBlock" />
         </StackPanel>
     </Grid>
 </Window>

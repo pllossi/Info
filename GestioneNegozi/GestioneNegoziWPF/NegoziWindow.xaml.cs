@@ -8,10 +8,13 @@ namespace GestioneNegoziWPF
     public partial class NegoziWindow : Window
     {
         private Negozi _negozi;
+        private MainWindow _main;
 
-        public NegoziWindow()
+        public NegoziWindow(Negozi negozi, MainWindow main)
         {
             InitializeComponent();
+            _negozi = negozi;
+            _main = main;
         }
 
         private void ConfermaNumeroNegozi_Click(object sender, RoutedEventArgs e)
@@ -47,6 +50,9 @@ namespace GestioneNegoziWPF
             {
                 _negozi = new Negozi(numeroNegozi, nomiNegozi);
                 MessageBox.Show("Negozi inseriti con successo.");
+                _main.SetNegozi(_negozi);
+                _main.Show();
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -58,11 +64,9 @@ namespace GestioneNegoziWPF
         {
             if (_negozi != null)
             {
-                double? incassoTotale = _negozi.IncassoTotale();
-                IncassoTotaleTextBlock.Text = $"Incasso Totale: {incassoTotale}";
-
-                var migliorRisultato = _negozi.MaggiorIncassoPerGiorno();
-                MigliorRisultatoTextBlock.Text = $"Miglior Risultato: {string.Join(", ", migliorRisultato.SelectMany(x => x))}";
+                var statisticheWindow = new StatisticheWindow(_negozi, _main);
+                statisticheWindow.Show();
+                this.Close();
             }
             else
             {

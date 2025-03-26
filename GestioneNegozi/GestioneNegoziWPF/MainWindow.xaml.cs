@@ -12,18 +12,25 @@ namespace GestioneNegoziWPF
             InitializeComponent();
         }
 
+        public void SetNegozi(Negozi negozi)
+        {
+            _negozi = negozi;
+        }
+
         private void ApriNegozi_Click(object sender, RoutedEventArgs e)
         {
-            var negoziWindow = new NegoziWindow();
+            var negoziWindow = new NegoziWindow(_negozi, this);
             negoziWindow.Show();
+            this.Hide();
         }
 
         private void ApriIncassi_Click(object sender, RoutedEventArgs e)
         {
             if (_negozi != null)
             {
-                var incassiWindow = new IncassiWindow(_negozi);
+                var incassiWindow = new IncassiWindow(_negozi, this);
                 incassiWindow.Show();
+                this.Hide();
             }
             else
             {
@@ -35,8 +42,9 @@ namespace GestioneNegoziWPF
         {
             if (_negozi != null)
             {
-                var statisticheWindow = new StatisticheWindow(_negozi);
+                var statisticheWindow = new StatisticheWindow(_negozi, this);
                 statisticheWindow.Show();
+                this.Hide();
             }
             else
             {

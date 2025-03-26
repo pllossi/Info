@@ -7,12 +7,14 @@ namespace GestioneNegoziWPF
     public partial class StatisticheWindow : Window
     {
         private Negozi _negozi;
+        private MainWindow _mainWindow;
 
-        public StatisticheWindow(Negozi negozi)
+        public StatisticheWindow(Negozi negozi, MainWindow mainWindow)
         {
             InitializeComponent();
             _negozi = negozi;
             NegozioComboBox.ItemsSource = _negozi.Nomi;
+            _mainWindow = mainWindow;
         }
 
         private void VisualizzaStatistiche_Click(object sender, RoutedEventArgs e)
