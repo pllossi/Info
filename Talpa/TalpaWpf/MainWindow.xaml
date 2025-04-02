@@ -10,7 +10,9 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Margin="10">
             <TextBlock Text="Dimensione:" VerticalAlignment="Center"/>
-            <TextBox x:Name="DimensioneTextBox" Width="50" Margin="5"/>
+            <TextBox x:Name="DimensioneTextBox" Width="65" Margin="5"/>
+            <TextBlock Text="Numero Tentativi:" Width="95" Margin="5"/>
+            <TextBox x:Name="NumeroTentativi" Width="65" Margin="5" />
             <Button Content="Crea Campo" Click="CreaCampo_Click" Margin="5"/>
         </StackPanel>
         <Grid x:Name="CampoGrid" Grid.Row="1" Margin="10"/>

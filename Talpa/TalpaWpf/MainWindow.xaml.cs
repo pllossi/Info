@@ -8,6 +8,7 @@ namespace TalpaWpf
     public partial class MainWindow : Window
     {
         private CampoDaGioco campoDaGioco;
+        private int tent;
 
         public MainWindow()
         {
@@ -16,11 +17,18 @@ namespace TalpaWpf
 
         private void CreaCampo_Click(object sender, RoutedEventArgs e)
         {
-            if (int.TryParse(DimensioneTextBox.Text, out int dimensione))
+            if (int.TryParse(NumeroTentativi.Text, out int tent) && int.TryParse(DimensioneTextBox.Text, out int dimensione))
             {
-                campoDaGioco = new CampoDaGioco(dimensione);
-                GeneraCampo(dimensione);
-                RigiocaButton.Visibility = Visibility.Collapsed;
+                try
+                {
+                    campoDaGioco = new CampoDaGioco(dimensione, tent);
+                    GeneraCampo(dimensione);
+                    RigiocaButton.Visibility = Visibility.Collapsed;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {
@@ -64,10 +72,17 @@ namespace TalpaWpf
             if (sender is Button button && button.Tag is (int x, int y))
             {
                 bool trovato = campoDaGioco.Tentativo(x, y);
-                if (trovato)
+                if (trovato||tent==0)
                 {
                     CampoGrid.Children.Clear();
-                    MessageBox.Show($"Hai vinto! Talpa trovata in {x},{y} in {campoDaGioco.GetTentativi()} tentativi!");
+                    if (tent != 0)
+                    {
+                        MessageBox.Show("Hai Finito i tentativi,Hai perso");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Hai vinto! Talpa trovata in {x},{y} in {campoDaGioco.GetTentativi()} tentativi!");
+                    }
                     RigiocaButton.Visibility = Visibility.Visible;
                 }
                 else
@@ -83,7 +98,7 @@ namespace TalpaWpf
         {
             if (int.TryParse(DimensioneTextBox.Text, out int dimensione))
             {
-                campoDaGioco = new CampoDaGioco(dimensione);
+                campoDaGioco = new CampoDaGioco(dimensione,tent);
                 GeneraCampo(dimensione);
                 RigiocaButton.Visibility = Visibility.Collapsed;
             }

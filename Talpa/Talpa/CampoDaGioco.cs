@@ -5,13 +5,14 @@
         private int[,] campo;
         private int _dimensione;
         private (int, int) posizioneTalpa;
-        private int tentativi;
+        private int _tentativi;
 
-        public CampoDaGioco(int dimensione)
+        public CampoDaGioco(int dimensione, int tentativi)
         {
+            if(dimensione <= 1) { throw new Exception("Il campo deve essere più grande di una sola casella");  }
             _dimensione = dimensione;
             campo = new int[dimensione, dimensione];
-            tentativi = 0;
+            _tentativi = tentativi;
         }
 
         public void PosizionaTalpa(int x, int y)
@@ -29,7 +30,7 @@
 
         public bool Tentativo(int x, int y)
         {
-            tentativi++;
+            _tentativi--;
             if (x == posizioneTalpa.Item1 && y == posizioneTalpa.Item2)
             {
                 return true;
@@ -39,7 +40,7 @@
 
         public int GetTentativi()
         {
-            return tentativi;
+            return _tentativi;
         }
     }
 }
