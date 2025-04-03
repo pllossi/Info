@@ -5,8 +5,6 @@ VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerificaTeoria_Torneo", "VerificaTeoria_Torneo\VerificaTeoria_Torneo.csproj", "{2F67FD6C-9C9F-427C-B435-F8A3EC99A632}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerificaTeoria_Torneo_Tests", "VerificaTeoria_Torneo_Tests\VerificaTeoria_Torneo_Tests.csproj", "{7738FC16-B66D-4F60-B7F5-724C4C334835}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{2F67FD6C-9C9F-427C-B435-F8A3EC99A632}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F67FD6C-9C9F-427C-B435-F8A3EC99A632}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F67FD6C-9C9F-427C-B435-F8A3EC99A632}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7738FC16-B66D-4F60-B7F5-724C4C334835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7738FC16-B66D-4F60-B7F5-724C4C334835}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7738FC16-B66D-4F60-B7F5-724C4C334835}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7738FC16-B66D-4F60-B7F5-724C4C334835}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
