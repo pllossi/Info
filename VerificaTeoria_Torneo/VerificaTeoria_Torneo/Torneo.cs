@@ -4,11 +4,13 @@
     {
         private Giocatore[] giocatori;
         private Partita[][] risultatiGiocatori;
+        private int _maxPartite;
 
         public Torneo(Giocatore[] g, int maxPartite)
         {
             giocatori = g;
             inizializzaRisultati(maxPartite);
+            _maxPartite = maxPartite;
         }
 
         private void inizializzaRisultati(int maxPartite)
@@ -100,10 +102,10 @@
 
         public int[,] MatriceRisultati()
         {
-            int[,] matrice = new int[giocatori.Length, 4];
+            int[,] matrice = new int[giocatori.Length, _maxPartite];
             for (int i = 0; i < giocatori.Length; i++)
             {
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < CalcolaPartiteGiocate(giocatori[i]); j++)
                 {
                     if (risultatiGiocatori[i][j] != null)
                     {
