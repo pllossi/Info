@@ -7,15 +7,15 @@ namespace VerificaTeoria_Torneo_Console
     {
         static void Main(string[] args)
         {
-            Giocatore giocatore1 = new Giocatore("Giocatore 1", DateTime.Now, 100, 1);
-            Giocatore giocatore2 = new Giocatore("Giocatore 2", DateTime.Now, 200, 2);
-            Giocatore giocatore3 = new Giocatore("Giocatore 3", DateTime.Now, 150, 3);
+            Giocatore giocatore1 = new Giocatore("Giocatore 1", DateTime.Now, 100, 0);
+            Giocatore giocatore2 = new Giocatore("Giocatore 2", DateTime.Now, 200, 1);
+            Giocatore giocatore3 = new Giocatore("Giocatore 3", DateTime.Now, 150, 2);
             Giocatore[] giocatori = { giocatore1, giocatore2, giocatore3 };
             Torneo torneo = new Torneo(giocatori, 10);
 
-            Partita partita1 = new Partita(giocatore1, giocatore2, giocatore1);
-            Partita partita2 = new Partita(giocatore1, giocatore3, giocatore3);
-            Partita partita3 = new Partita(giocatore2, giocatore3, null);
+            Partita partita1 = new Partita(giocatore1, giocatore2, giocatore1,0);
+            Partita partita2 = new Partita(giocatore1, giocatore3, giocatore3,1);
+            Partita partita3 = new Partita(giocatore2, giocatore3, null, 2);
 
             torneo.AggiungiPartita(partita1);
             torneo.AggiungiPartita(partita2);

@@ -4,18 +4,16 @@
     {
         private Giocatore[] giocatori;
         private Partita[][] risultatiGiocatori;
-        private int _maxPartite;
-
         public Torneo(Giocatore[] g, int maxPartite)
         {
+            if (maxPartite < 0) throw new ArgumentOutOfRangeException("Il numero di partite deve essere maggiore di 0");
             giocatori = g;
+            risultatiGiocatori = new Partita[giocatori.Length][];
             inizializzaRisultati(maxPartite);
-            _maxPartite = maxPartite;
         }
 
         private void inizializzaRisultati(int maxPartite)
         {
-            risultatiGiocatori = new Partita[giocatori.Length][];
             for (int i = 0; i < giocatori.Length; i++)
             {
                 risultatiGiocatori[i] = new Partita[maxPartite];
@@ -24,88 +22,68 @@
 
         public void AggiungiPartita(Partita partita)
         {
-            for (int i = 0; i < giocatori.Length; i++)
-            {
-                if (giocatori[i].Numero == partita.Giocatore1.Numero || giocatori[i].Numero == partita.Giocatore2.Numero)
-                {
-                    for (int j = 0; j < risultatiGiocatori[i].Length; j++)
-                    {
-                        if (risultatiGiocatori[i][j] == null)
-                        {
-                            risultatiGiocatori[i][j] = partita;
-                            break;
-                        }
-                    }
-                }
-            }
+            if (partita.Giocatore1.Numero < 0 || partita.Giocatore1.Numero >= giocatori.Length) throw new ArgumentOutOfRangeException("Il giocatore deve essere uno dei 2 che gioca");
+            if (partita.Giocatore2.Numero < 0 || partita.Giocatore2.Numero >= giocatori.Length) throw new ArgumentOutOfRangeException("Il giocatore deve essere uno dei 2 che gioca");
+            if (partita.Numero < 0 || partita.Numero >= risultatiGiocatori[partita.Giocatore1.Numero].Length) throw new ArgumentOutOfRangeException("Il numero della partita è fuori range");
+            risultatiGiocatori[partita.Giocatore1.Numero][partita.Numero] = partita;
+            risultatiGiocatori[partita.Giocatore2.Numero][partita.Numero] = partita;
+
         }
 
         public int CalcolaPartiteGiocate(Giocatore giocatore)
         {
-            for (int i = 0; i < giocatori.Length; i++)
+            if (giocatore.Numero < 0 || giocatore.Numero >= giocatori.Length) throw new ArgumentOutOfRangeException("Il giocatore deve essere uno dei 2 che gioca");
+
+            int count = 0;
+            for (int j = 0; j < risultatiGiocatori[giocatore.Numero].Length; j++)
             {
-                if (giocatori[i].Numero == giocatore.Numero)
+                if (risultatiGiocatori[giocatore.Numero][j] != null)
                 {
-                    int count = 0;
-                    for (int j = 0; j < risultatiGiocatori[i].Length; j++)
-                    {
-                        if (risultatiGiocatori[i][j] != null)
-                        {
-                            count++;
-                        }
-                    }
-                    return count;
+                    count++;
                 }
             }
-            throw new Exception("Giocatore non presente nel torneo");
+            return count;
+
         }
 
         public int CalcolaVittorie(Giocatore giocatore)
         {
+            if (giocatore.Numero < 0 || giocatore.Numero >= giocatori.Length) throw new Exception("Giocatore deve essere presente nel torneo");
             int vittorie = 0;
-            for (int i = 0; i < giocatori.Length; i++)
+            for (int j = 0; j < risultatiGiocatori[giocatore.Numero].Length; j++)
             {
-                if (giocatori[i].Numero == giocatore.Numero)
+                if (risultatiGiocatori[giocatore.Numero][j] != null && risultatiGiocatori[giocatore.Numero][j].Vincitore == giocatore)
                 {
-                    for (int j = 0; j < risultatiGiocatori[i].Length; j++)
-                    {
-                        if (risultatiGiocatori[i][j] != null && risultatiGiocatori[i][j].Vincitore?.Numero == giocatore.Numero)
-                        {
-                            vittorie++;
-                        }
-                    }
-                    return vittorie;
+                    vittorie++;
                 }
             }
-            throw new Exception("Giocatore non presente nel torneo");
+            return vittorie;
+
         }
 
         public int CalcolaSconfitte(Giocatore giocatore)
         {
+            if (giocatore.Numero < 0 || giocatore.Numero >= giocatori.Length) throw new Exception("Giocatore deve essere presente nel torneo");
+
+
             int sconfitte = 0;
-            for (int i = 0; i < giocatori.Length; i++)
+
+            for (int j = 0; j < risultatiGiocatori[giocatore.Numero].Length; j++)
             {
-                if (giocatori[i].Numero == giocatore.Numero)
+                if (risultatiGiocatori[giocatore.Numero][j] != null && risultatiGiocatori[giocatore.Numero][j].Vincitore != giocatore)
                 {
-                    for (int j = 0; j < risultatiGiocatori[i].Length; j++)
-                    {
-                        if (risultatiGiocatori[i][j] != null && risultatiGiocatori[i][j].Vincitore != null && risultatiGiocatori[i][j].Vincitore.Numero != giocatore.Numero)
-                        {
-                            sconfitte++;
-                        }
-                    }
-                    return sconfitte;
+                    sconfitte++;
                 }
             }
-            throw new Exception("Giocatore non presente nel torneo");
+            return sconfitte;
         }
 
-        public int[,] MatriceRisultati()
+        public int[,] MatriceRisultati(int numeroPartite = 4)
         {
-            int[,] matrice = new int[giocatori.Length, _maxPartite];
-            for (int i = 0; i < giocatori.Length; i++)
+            int[,] matrice = new int[giocatori.Length, numeroPartite];
+            for (int i = 0; i < matrice.GetLength(0); i++)
             {
-                for (int j = 0; j < CalcolaPartiteGiocate(giocatori[i]); j++)
+                for (int j = 0; j < matrice.GetLength(1); j++)
                 {
                     if (risultatiGiocatori[i][j] != null)
                     {
@@ -113,7 +91,7 @@
                         {
                             matrice[i, j] = 0;
                         }
-                        else if (risultatiGiocatori[i][j].Vincitore.Numero == giocatori[i].Numero)
+                        else if (risultatiGiocatori[i][j].Vincitore == giocatori[i])
                         {
                             matrice[i, j] = 1;
                         }
