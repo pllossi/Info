@@ -8,7 +8,6 @@ namespace TalpaWpf
     public partial class MainWindow : Window
     {
         private CampoDaGioco campoDaGioco;
-        private int tent;
 
         public MainWindow()
         {
@@ -72,23 +71,23 @@ namespace TalpaWpf
             if (sender is Button button && button.Tag is (int x, int y))
             {
                 bool trovato = campoDaGioco.Tentativo(x, y);
-                if (trovato||tent==0)
+                if (trovato)
                 {
                     CampoGrid.Children.Clear();
-                    if (tent != 0)
+                    if (campoDaGioco.GetTentativiRimanenti()==campoDaGioco.GetTentativiMax())
                     {
                         MessageBox.Show("Hai Finito i tentativi,Hai perso");
                     }
                     else
                     {
-                        MessageBox.Show($"Hai vinto! Talpa trovata in {x},{y} in {campoDaGioco.GetTentativi()} tentativi!");
+                        MessageBox.Show($"Hai vinto! Talpa trovata in {x},{y} in {campoDaGioco.GetTentativiRimanenti()} tentativi!");
                     }
                     RigiocaButton.Visibility = Visibility.Visible;
                 }
                 else
                 {
                     button.Content = "X";
-                    MessageBox.Show($"Nessuna talpa in {x},{y}. Tentativi: {campoDaGioco.GetTentativi()}");
+                    MessageBox.Show($"Nessuna talpa in {x},{y}. Tentativi: {campoDaGioco.GetTentativiRimanenti()}");
                     button.IsEnabled = false;
                 }
             }
@@ -98,7 +97,7 @@ namespace TalpaWpf
         {
             if (int.TryParse(DimensioneTextBox.Text, out int dimensione))
             {
-                campoDaGioco = new CampoDaGioco(dimensione,tent);
+                campoDaGioco = new CampoDaGioco(dimensione,campoDaGioco.GetTentativiMax());
                 GeneraCampo(dimensione);
                 RigiocaButton.Visibility = Visibility.Collapsed;
             }
