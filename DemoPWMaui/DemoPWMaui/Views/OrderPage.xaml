@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+            xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+            xmlns:local="clr-namespace:DemoPWMaui"
+            xmlns:views="clr-namespace:DemoPWMaui.Views"
+            xmlns:models="clr-namespace:DemoPWMaui.Models"
+             x:Class="DemoPWMaui.Views.OrderPage"
+             x:DataType="local:OrderViewModel"
+             Title="{Binding PageTitle}">
+
+    <!--CONTENUTI DELLA PAGINA: 
+            - seleziona condimento base della pizza
+            - seleziona lista di ingredienti
+            - indica eventuali preferenze personali 
+            - indica numero di pizze così specificate da ordinare
+            - salva ordine (al click si torna alla pagina ListPage che conterrà la lista di ordini aggiornata con questo nuovo ordine salvato)
+        -->
+
+<!-- pagina "scrollabile" verticalmente -->
+    <ScrollView>
+        <VerticalStackLayout Margin="20, 5"
+                             Spacing="20">
+
+            <!--Selezione del condimento base-->
+            <VerticalStackLayout>
+                <Label Text="Seleziona la base della tua pizza: "
+                       FontAttributes="Bold"
+                       />
+                <!--NOTE: essendo 'AvailableBases' una ObservableCollection al cambiamento del valore delle proprietà queste vengono aggiornate automaticamente senza bisogno di ulteriori interventi. lo stesso per gli elementi sotto-->
+                <CollectionView ItemsSource="{Binding AvailableBases}"
+                                >
+                    <CollectionView.ItemTemplate >
+                        <DataTemplate x:DataType="models:ItemModel">
+                            <!--NOTE: è stato specificato il DataType del DataTemplate in questo modo ho l'accesso alle proprietà della classe.-->
+                            <RadioButton Content="{Binding Value}"
+                                         IsChecked="{Binding IsSelected}"
+                                         />
+                           
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <!--Selezione della lista di ingredienti-->
+            <VerticalStackLayout>
+                <Label Text="Seleziona i tuoi ingredienti: "
+                       FontAttributes="Bold"
+                       />
+                <CollectionView ItemsSource="{Binding AvailableToppings}">
+                    <CollectionView.ItemTemplate >
+                        <DataTemplate x:DataType="models:ItemModel">                            
+                            <HorizontalStackLayout>
+                                <CheckBox IsChecked="{Binding IsSelected}"
+                                          Color="{StaticResource CustomOrange}"/>                                
+                                <!--NOTE: il colore 'CustomOrange' è definito all'interno del file Colors.xaml (cartella Resources).-->
+                                <Label Text="{Binding Value}"
+                                       VerticalOptions="Center"
+                                       />
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <!--Inserimento di eventuali preferenze e/o note-->
+            <VerticalStackLayout>
+                <Label Text="Indica eventuali preferenze: "
+                       FontAttributes="Bold" 
+                       />
+                <Entry Placeholder="Scrivi qui" 
+                       PlaceholderColor="{StaticResource Gray500}"
+                       ReturnType="Send"
+                       Completed="OnNotesEntryCompleted" 
+                       />
+                <!--NOTE: 'OnNotesEntryCompleted' è un gestore di eventi ed è definito all'interno del file .xaml.cs come richiesto da MAUI, quindi è sufficiente utilizzare il suo nome come riferimento.-->
+                <!--NOTE: anche il colore 'Gray500' è definito all'interno del file Colors.xaml (cartella Resources).-->
+            </VerticalStackLayout>
+
+            <!--Inserimento della quantità di pizze da ordinare-->
+            <HorizontalStackLayout>
+                <Label Text="Indica la quantità: "
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       />
+                <Entry Keyboard="Numeric"
+                       ReturnType="Send"
+                       Completed="OnQuantityIndicated"
+                       />
+                <!--NOTE: Keyboard="Numeric" indica la richiesta di mostrare una tastiera di tipo numerico al click sul campo di inserimento della Entry.-->
+                <!--NOTE: anche 'OnQuantityIndicated' è un gestore di eventi a cui è sufficiente riferirsi con il nome.-->
+            </HorizontalStackLayout>
+
+            <!--Salvataggio dell'ordine ed eventuale messaggio di errore (in mancanza di un condimento base selezionato)-->
+            <Label Text="{Binding Error}"
+                   IsVisible="{Binding HasError}"
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource CustomDarkRed}"
+                   HorizontalOptions="Center"
+                   Padding="10"
+                   />
+            <!--NOTE: anche il colore 'CustomDarkRed' è definito all'interno del file Colors.xaml (cartella Resources).-->
+            <Button Text="SALVA"
+                    FontAttributes="Bold"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type views:OrderPage}}, Path=SaveOrderCommand}"
+                    />
+            <!--NOTE: il comando 'SaveOrderCommand' è definito nel file .xaml.cs, per cui è parte del namespace della view (non del viewmodel).-->
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+             xmlns:local="clr-namespace:DemoPWMaui"
+             xmlns:views="clr-namespace:DemoPWMaui.Views"
+             xmlns:models="clr-namespace:DemoPWMaui.Models"
+             x:Class="DemoPWMaui.Views.ListPage"
+             x:DataType="local:ListViewModel"
+             Title="Le tue pizze">
+
+    <!-- XAML PAGE: 
+        'xmlns' è una direttiva per dichiarare dei namespace in XML.
+        'xmlns' e 'xmlns:x' sono inseriti automaticamente alla creazione di una nuova pagina di MAUI e sono da considerarsi indicatori di versione.
+    
+        I link contenuti in 'xmlns:toolkit' e 'xmlns:mi' sono forniti dalle documentazioni dei rispettivi pacchetti di dipendenze (i file che si aprono al termine dell'installazione del pacchetto).
+        
+        I riferimenti a spazi di nomi interni al progetto sono 'xmlns:local', 'xmlns:views' e 'xmlns:models'. 
+        Sono importanti perché permettono di accedere rispettivamente ai viewmodel, alle views e ai model.
+        Questi nomi sono arbitrari, ovvero possiamo chiamarli con qualsiasi nome, ma questi nomi sono una consuetudine condivisa dai programmatori che è bene seguire!
+        
+        Per accedere ad un namespace nel codice è sufficiente utilizzare il nome assegnatogli (eg: xmlns:toolkit -> toolkit).
+        Ad esempio, sono stati assegnati i valori di due attributi: 
+            - x:Class richiede di inserire il nome .NET completo della classe che rappresenta la pagina ed è necessario in ogni file xaml che rappresenti una Page;
+            - x:DataType permette di specificare il modello (BindingContext) principale della Page. 
+        
+        Se nel file .xaml.cs della view è stato specificato un viewmodel sulla proprietà BindingContext, questo deve essere dichiarato all'interno di x:DataType (altrimenti il Binding non risulta completo).     
+    -->
+
+
+    <!-- CONTENUTI DELLA PAGINA: QUESTA SARA' LA PAGINA PRINCIPALE E CONTERRA' 
+        - bottone per aggiungere pizze all'ordine (il bottone dovvrà provvedere all'apertura della pagina OrderPage)
+        - elenco delle pizze ordinate 
+    -->
+
+    <!-- COMPORTAMENTO DELLA PAGINA CHE VOGLIAMO AVERE ALL'EVENTO APPEARING
+        - AppearingCommand è il comando che abbiamo codificato all'interno del viewModel dove abbiamo il metodo public void OnAppearing() identificato come RelayCommand
+        il metodo si preoccuperà di pulire e ricaricare la lista delle pizze ordinate
+    -->
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing" 
+                                        Command="{Binding AppearingCommand}" />
+    </ContentPage.Behaviors>
+
+    <!-- LAYOUT VERTICALE NEL QUALE INSERIRE LA PAGINA -->
+    
+    <VerticalStackLayout Margin="20, 5" >
+
+        <!--Bottone 'AGGIUNGI PIZZA'-->
+        <Button Text="AGGIUNGI PIZZA"
+                ImageSource="{mi:FontAwesomeSolid Icon=Plus, IconColor={AppThemeBinding Default={StaticResource White}}}"
+                Command="{Binding Source={RelativeSource AncestorType={x:Type views:ListPage}}, Path=NewOrderCommand}"
+                Padding="7"
+                Margin="20, 10, 20, 20"
+                />
+        <!--NOTE: il comando 'NewOrderCommand' è definito nel file .xaml.cs della view perchè si riferisce a aprire/chiudere pagine -->
+
+        <!-- Elenco ordini pizze
+            - l'elenco è agganciato ad OrdersList (l'ObservableCollection definito nel viewModel)
+            - se la lista è vuota viene visualizzato un messaggio
+        -->
+        <CollectionView ItemsSource="{Binding OrdersList}"
+                        EmptyView="Non hai ancora ordinato alcuna pizza, apri l'altra pagina per aggiungere al tuo ordine!"
+                        >
+        <!-- elementi della collection ovvero i nostri singoli ordini presenti nella lista 
+            - abbiamo specificato il DataType del DataTemplate per permettere l'accesso alle proprietà della classe PizzaOrderModel ovvero degli elementi che compongono la OrderList.  -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PizzaOrderModel" >
+                    
+                    <VerticalStackLayout Margin="10"
+                                         Spacing="10"
+                                         >
+                        <!-- definiamo il comportamento che vogliamo avere al tap sul VerticalStackLayout
+                        - vogliamo aprire la pagina relativa all'ordine relativo all'elemento su cui ho fatto tap
+                        - OpenOrderCommand: il metodo OpenOrder(int orderId) è definito nel xaml.cs perchè si preoccupa di aprire una nuova view
+                        - il parametro orderId viene passato attraverso CommandParameter="{Binding Id}" che ci permette di passare come parametro l'Id dell'oggetto PizzaOrderModel
+                        -->
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type views:ListPage}}, Path=OpenOrderCommand}"
+                                                  CommandParameter="{Binding Id}" 
+                                                  />                           
+                        </VerticalStackLayout.GestureRecognizers>
+                        <HorizontalStackLayout>
+                            <Label Text="Ordine n."
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource Primary}"
+                                   />
+                            <Label Text="{Binding Id}"
+                                   FontAttributes="Bold"
+                                   TextColor="{StaticResource Primary}"
+                                   />
+                            <!--NOTE: il colore 'CustomDarkRed' è definito all'interno del file Colors.xaml (cartella Resources/Styles). Un altro modo per accedere alla proprietà ma specificando il tema (Light, Dafault, Dark) è: AppThemeBinding Default={StaticResource CustomDarkRed}-->
+                        </HorizontalStackLayout>
+
+                        <Grid ColumnSpacing="5"
+                              >
+                            <!-- definiamo una grid formata da 3 colonne di cui la prima di dimensione variabile (a riempimento) e le altre di 30 px
+                                ogni riga avrà una altezza * a riempimento-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="30" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            
+<!-- COLONNA ZERO di dimensione variabile conterrà i dati dell'ordine-->
+                            <VerticalStackLayout Grid.Column="0"
+                                                 Margin="5, 0, 0, 0"
+                                                 >
+                                <!-- creaiamo un HorizontalStackLayout per far si che le due label vengano visualizzate una a fianco all'altra (formiamo così una sola riga) -->
+                                <HorizontalStackLayout>
+                                    <Label Text="base: " />
+                                    <Label Text="{Binding Base}" />
+                                </HorizontalStackLayout>
+
+                                <!-- ToppingsAreSet e Toppings che sono in Binding sono attributi del model (quello individuato nel DataTyper del DataTemplate)  -->
+                                <HorizontalStackLayout>
+                                    <Label Text="condimenti: "
+                                           IsVisible="{Binding ToppingsAreSet}"
+                                           />
+                                    <HorizontalStackLayout BindableLayout.ItemsSource="{Binding Toppings}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <HorizontalStackLayout>
+                                                    <Label Text="{Binding}" />
+                                                    <!-- visualizza il contenuto di ogni elemento della lista Toppings (Text="{Binding}") e gli aggiunge a fianco uno spazio (Text=" ") -->
+                                                    <Label Text=" "/>
+                                                </HorizontalStackLayout>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </HorizontalStackLayout>
+                                </HorizontalStackLayout>
+
+                                <!-- NotesAreSet che è in Binding è sempre un attributo del model (quello individuato nel DataTyper del DataTemplate)  -->
+                                <HorizontalStackLayout>
+                                    <Label Text="note: "
+                                           IsVisible="{Binding NotesAreSet}"
+                                           VerticalOptions="Center"
+                                           />
+                                    <Label Text="{Binding Notes}"
+                                           Margin="0, 5, 0, 0"
+                                           VerticalOptions="Center"
+                                           />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                            
+<!-- COLONNA 1 di dimensione 30px conterrà la quantità-->
+                            <Label Grid.Column="1" 
+                                   Text="{Binding Quantity}" 
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Start"
+                                   />
+
+<!-- COLONNA 2 di dimensione 30px conterrà il bottone per eliminare l'ordine-->
+
+                            <!-- 'DeleteOrderCommand' è definito all'interno del viewmodel ([RelayCommand] public void DeleteOrder(int orderId) quindi anche qui serve il CommandParameter
+                                il DataType è ancora PizzaOrderModel perchè siamo ancora all'interno di CollectionView.ItemTemplate 
+                                quindi CommandParameter="{Binding Id}" fa riferimento all'Id di PizzaOrderModel
+                            -->
+                            <Button Grid.Column="2"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:ListViewModel}}, Path=DeleteOrderCommand}" 
+                                    CommandParameter="{Binding Id}"
+                                    ImageSource="{mi:FontAwesomeSolid Icon=Xmark, IconColor=white}"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Start"
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    BackgroundColor="{StaticResource Magenta}"
+                                    Padding="7"
+                                    />
+                            <!--NOTE: un altro modo per ottenere un bottone che abbia solo un'immagine (e niente testo) è utilizzare <ImageButton>.-->
+                        </Grid>
+                        
+                        <!-- con questo facciamo apparire la linea di separazione tra gli ordini-->
+                        <BoxView BackgroundColor="{StaticResource Primary}" 
+                                 WidthRequest="250" 
+                                 HeightRequest="1"
+                                 />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+    </VerticalStackLayout>
+</ContentPage>
