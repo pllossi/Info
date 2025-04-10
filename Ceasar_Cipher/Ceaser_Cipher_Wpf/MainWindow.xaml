@@ -1,0 +1,16 @@
+﻿<Window x:Class="Ceaser_Cipher_Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ceaser_Cipher_Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Ceasar Cipher" Margin="268,10,268,359" FontSize="40" />
+        <StackPanel Margin="0,143,0,-26">
+            <Button x:Name="EncryptButton" Content="Encrypt" Width="239" Click="EncryptButton_Click" Height="83"/>
+            <Button x:Name="DecryptButton" Content="Decrypt" Width="240" Click="DecryptButton_Click" Height="83" Margin="70"/>
+        </StackPanel>
+    </Grid>
+</Window>
