@@ -4,6 +4,10 @@
     {
         public string Enrc(string toEnrc,int shift)
         {
+            if (string.IsNullOrEmpty(toEnrc))
+            {
+                throw new Exception("String is empty");
+            }
             string Encript = "";
             foreach(char c in toEnrc)
             {
@@ -15,6 +19,10 @@
         }
         public string Decrypt(string toDecrypt, int shift)
         {
+            if(string.IsNullOrEmpty(toDecrypt))
+            {
+                throw new Exception("String is empty");
+            }
             string Decript = "";
             foreach (char c in toDecrypt)
             {

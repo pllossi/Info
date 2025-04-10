@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ceasar_Cipher\Ceasar_Cipher.csproj" />
+  </ItemGroup>
+
 </Project>
