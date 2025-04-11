@@ -22,18 +22,23 @@ namespace TreasureHuntGame // Definisce il namespace del progetto.
         {
             for (int i = 0; i < 5; i++) // Itera per ogni riga della griglia.
             {
-                GameGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                GameGrid.RowDefinitions.Add(new RowDefinition()); // Aggiunge una nuova riga alla griglia.
                 for (int j = 0; j < 5; j++) // Itera per ogni colonna della griglia.
                 {
-                    GameGrid.RowDefinitions.Add(new RowDefinition());
+                    if (i == 0) // Aggiunge le colonne solo una volta.
+                    {
+                        GameGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                    }
+
                     Button btn = new Button // Crea un nuovo pulsante per rappresentare una cella.
                     {
                         Content = "", // Imposta il contenuto iniziale del pulsante.
-                        Tag = (i, j) // Memorizza la posizione della cella nelle proprietà del pulsante.
+                        Tag = (i, j), // Memorizza la posizione della cella nelle proprietà del pulsante.
                     };
-                    btn.Click += OnCellClick; // Associa l'evento di click al pulsante.
-                    GameGrid.Children.Add(btn); // Aggiunge il pulsante alla griglia grafica.
-                    
+                    btn.Click += OnCellClick; // Aggiunge un gestore di eventi per il click del pulsante.
+                    Grid.SetRow(btn, i); // Imposta la riga del pulsante nella griglia.
+                    Grid.SetColumn(btn, j); // Imposta la colonna del pulsante nella griglia.
+                    GameGrid.Children.Add(btn); // Aggiunge il pulsante alla griglia.
                 }
             }
         }

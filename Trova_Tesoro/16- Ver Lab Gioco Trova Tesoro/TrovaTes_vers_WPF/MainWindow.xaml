@@ -5,8 +5,6 @@
     <Grid Name="GameGrid" Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!-- Altri elementi possono essere aggiunti qui -->
     </Grid>
