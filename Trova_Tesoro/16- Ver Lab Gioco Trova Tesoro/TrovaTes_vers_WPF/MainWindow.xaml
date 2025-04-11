@@ -1,0 +1,13 @@
+﻿<Window x:Class="TreasureHuntGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Trova il Tesoro" Height="450" Width="400">
+    <Grid Name="GameGrid" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- Altri elementi possono essere aggiunti qui -->
+    </Grid>
+</Window>
