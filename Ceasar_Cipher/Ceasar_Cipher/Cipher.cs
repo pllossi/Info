@@ -9,7 +9,7 @@
                 throw new Exception("String is empty");
             }
             string Encript = "";
-            shift = (shift % 26 + 26) % 26; // Normalizza lo shift per supportare numeri negativi
+            shift = (shift % 26 + 26) % 26; 
             foreach (char c in toEnrc)
             {
                 if (char.IsLetter(c))
@@ -20,7 +20,7 @@
                 }
                 else
                 {
-                    Encript += c; // Mantieni i caratteri non alfabetici
+                    Encript += c; 
                 }
             }
             return Encript;
@@ -32,7 +32,7 @@
                 throw new Exception("String is empty");
             }
             string Decript = "";
-            shift = (shift % 26 + 26) % 26; // Normalizza lo shift per supportare numeri negativi
+            shift = (shift % 26 + 26) % 26; 
             foreach (char c in toDecrypt)
             {
                 if (char.IsLetter(c))
@@ -43,7 +43,7 @@
                 }
                 else
                 {
-                    Decript += c; // Mantieni i caratteri non alfabetici
+                    Decript += c; 
                 }
             }
             return Decript;
