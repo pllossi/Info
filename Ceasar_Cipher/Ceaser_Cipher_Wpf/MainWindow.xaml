@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <Label Content="Ceasar Cipher" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Margin="10"/>
         <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Last 5 Cipher" Margin="10"/>
+            <TextBlock Margin="10"><Run Text="Last 5 "/><Run Language="it-it" Text="Encription"/></TextBlock>
             <ListBox x:Name="EncryptionsListBox" Width="200" Height="200" Margin="10"/>
         </StackPanel>
         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">

@@ -18,10 +18,16 @@
                     char charact = (char)(((c - offset + shift) % 26) + offset);
                     Encript += charact;
                 }
-                else
+                else if (char.IsNumber(c))
                 {
-                    Encript += c; 
+                    int number = (int)char.GetNumericValue(c);
+                    int newNumber = (number + shift) % 10;
+                    Encript += newNumber.ToString();
+                } else
+                {
+                       Encript += c;
                 }
+                
             }
             return Encript;
         }
@@ -41,10 +47,16 @@
                     char charact = (char)(((c - offset - shift + 26) % 26) + offset);
                     Decript += charact;
                 }
-                else
+                else if (char.IsNumber(c))
                 {
-                    Decript += c; 
+                    int number = (int)char.GetNumericValue(c);
+                    int newNumber = (number - shift + 10) % 10;
+                    Decript += newNumber.ToString();
+                } else
+                {
+                       Decript += c;
                 }
+                
             }
             return Decript;
         }
