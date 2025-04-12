@@ -22,6 +22,7 @@
             <TextBox x:Name="txtShift" Width="300" Height="30" Margin="10" Text="Inserisci il valore di shift" GotFocus="txtShift_GotFocus"/>
             <Button Content="Cifra" Width="100" Height="30" Margin="10" Click="EncryptButton_Click"/>
             <Button Content="Decifra" Width="100" Height="30" Margin="10" Click="DecryptButton_Click"/>
+            <Label Content="Testo Cifrato" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
             <TextBlock x:Name="OutputTextBlock" Width="300" Height="30" Margin="10" TextWrapping="Wrap"/>
         </StackPanel>
         <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
