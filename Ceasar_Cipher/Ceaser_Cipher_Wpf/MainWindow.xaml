@@ -23,7 +23,7 @@
             <Button Content="Encript" Width="100" Height="30" Margin="10" Click="EncryptButton_Click"/>
             <StackPanel Orientation="Horizontal" Width="239">
                 <Button Content="Decript" Width="100" Height="30" Margin="10" Click="DecryptButton_Click"/>
-                <Button x:Name="Decript_Last" Content="Decript Last" Width="100" Height="30" Margin="10" Click="Decript_Last_Click" Visibility="Collapsed"/>
+                <Button x:Name="Decript_Last" Content="Decript Last" Width="100" Height="30" Margin="10" Click="Decript_Last_Click"/>
             </StackPanel>
             <Label Content="Encripted text" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
             <TextBlock x:Name="OutputTextBlock" Width="300" Height="30" Margin="10" TextWrapping="Wrap"/>

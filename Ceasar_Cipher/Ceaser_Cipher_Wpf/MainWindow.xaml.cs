@@ -31,7 +31,6 @@ namespace Ceaser_Cipher_Wpf
                 AddToList(_encryptions, encryptedText, EncryptionsListBox);
                 _lastDecryption = encryptedText;
                 _lastShift = shift;
-                Decript_Last.Visibility = Visibility.Visible;
             }
             else
             {
