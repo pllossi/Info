@@ -50,7 +50,7 @@
                 else if (char.IsNumber(c))
                 {
                     int number = (int)char.GetNumericValue(c);
-                    int newNumber = (number - shift + 10) % 10;
+                    int newNumber = (Math.Abs(number - shift)) % 10;
                     Decript += newNumber.ToString();
                 } else
                 {
