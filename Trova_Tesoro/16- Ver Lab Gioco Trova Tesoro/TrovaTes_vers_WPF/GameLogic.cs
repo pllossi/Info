@@ -16,8 +16,8 @@ namespace TreasureHuntGame // Definisce il namespace del progetto.
         // Metodo per posizionare il tesoro casualmente nella griglia.
         public (int, int) PlaceTreasure(int rows, int cols) // Ritorna una tupla con le coordinate del tesoro.
         {
-            treasureX = random.Next(rows); // Genera una posizione casuale per la coordinata X basata sulle righe.
-            treasureY = random.Next(cols); // Genera una posizione casuale per la coordinata Y basata sulle colonne.
+            treasureX = random.Next(rows);
+            treasureY = random.Next(cols);
             return (treasureX, treasureY);  // Ritorna la posizione del tesoro.
         }
 

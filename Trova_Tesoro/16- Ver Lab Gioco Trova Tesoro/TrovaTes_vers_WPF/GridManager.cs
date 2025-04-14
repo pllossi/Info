@@ -3,10 +3,13 @@
     public class GridManager // Classe responsabile della gestione della griglia.
     {
         private int[,] grid;  // Dichiarazione della matrice che rappresenta la griglia.
+        private GameLogic gameLogic; //Dichiarazione di gameLogic(Inserzione di Boschi)(Serve a piazzare il tesoro)
 
         public GridManager(int rows, int cols)  // Costruttore della classe GridManager.
         {
             grid = new int[rows, cols];  // Inizializza la matrice con le dimensioni specificate.
+            gameLogic = new GameLogic(); //Inizializza GameLogic(Inserzione di Boschi)
+            gameLogic.PlaceTreasure(rows, cols);//inserisco il tesoro (Inserzione di Boschi)
         }
 
         // Metodo per resettare la griglia, impostando tutti i valori a 0.
