@@ -2,7 +2,7 @@
 {
     public class Veicolo
     {
-        protected string targa;
+        public string targa { get; private set; }
         protected int costoAlGiorno;
         protected DateOnly dataInizioNoleggio;
         

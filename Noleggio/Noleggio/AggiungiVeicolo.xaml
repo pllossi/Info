@@ -1,0 +1,22 @@
+﻿<Window x:Class="Noleggio.AggiungiVeicolo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Aggiungi Veicolo" Height="300" Width="400">
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="Tipo Veicolo:"/>
+            <ComboBox x:Name="TipoVeicoloCombo" Margin="0,5,0,10">
+                <ComboBoxItem Content="Bicicletta"/>
+                <ComboBoxItem Content="Automobile"/>
+                <ComboBoxItem Content="Moto"/>
+            </ComboBox>
+            <TextBlock Text="Targa:"/>
+            <TextBox x:Name="TargaBox" Margin="0,5,0,10"/>
+            <TextBlock Text="Costo al giorno:"/>
+            <TextBox x:Name="CostoBox" Margin="0,5,0,10"/>
+            <TextBlock Text="Dettaglio (Posti/Casco):"/>
+            <TextBox x:Name="DettaglioBox" Margin="0,5,0,10"/>
+            <Button Content="Aggiungi" Click="Aggiungi_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

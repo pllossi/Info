@@ -1,0 +1,8 @@
+﻿<Window x:Class="Noleggio.VeicoliPresenti"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Veicoli Presenti" Height="400" Width="500">
+    <Grid Margin="10">
+        <ListBox x:Name="VeicoliListBox" FontSize="14"/>
+    </Grid>
+</Window>

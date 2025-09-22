@@ -1,0 +1,17 @@
+﻿<Window x:Class="Noleggio.NoleggiaVeicolo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Noleggia Veicolo" Height="200" Width="300">
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="Tipo Veicolo:"/>
+            <ComboBox x:Name="TipoVeicoloCombo" Margin="0,5,0,10">
+                <ComboBoxItem Content="Bicicletta"/>
+                <ComboBoxItem Content="Automobile"/>
+            </ComboBox>
+            <TextBlock Text="Data Inizio Noleggio:"/>
+            <DatePicker x:Name="DataInizioPicker" Margin="0,5,0,10"/>
+            <Button Content="Noleggia" Click="Noleggia_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

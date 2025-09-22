@@ -1,0 +1,13 @@
+﻿<Window x:Class="Noleggio.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gestione Noleggio" Height="250" Width="350">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="200">
+            <Button Content="Aggiungi Veicolo" Margin="0,10" Click="AggiungiVeicolo_Click"/>
+            <Button Content="Noleggia Veicolo" Margin="0,10" Click="NoleggiaVeicolo_Click"/>
+            <Button Content="Restituisci Veicolo" Margin="0,10" Click="RestituisciVeicolo_Click"/>
+            <Button Content="Visualizza Veicoli Presenti" Margin="0,10" Click="VeicoliPresenti_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

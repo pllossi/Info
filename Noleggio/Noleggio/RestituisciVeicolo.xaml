@@ -1,0 +1,14 @@
+﻿<Window x:Class="Noleggio.RestituisciVeicolo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Restituisci Veicolo" Height="250" Width="350">
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="Targa Veicolo:"/>
+            <TextBox x:Name="TargaBox" Margin="0,5,0,10"/>
+            <TextBlock Text="Data Fine Noleggio:"/>
+            <DatePicker x:Name="DataFinePicker" Margin="0,5,0,10"/>
+            <Button Content="Restituisci" Click="Restituisci_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
