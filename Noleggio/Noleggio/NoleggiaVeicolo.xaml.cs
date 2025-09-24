@@ -22,6 +22,8 @@ namespace Noleggio
                 v = Gestore.NoleggiaBici();
             else if (tipo == "Automobile")
                 v = Gestore.NoleggiaAuto();
+            else if (tipo == "Moto")
+                v = Gestore.NoleggiaMoto();
 
             if (v != null)
             {

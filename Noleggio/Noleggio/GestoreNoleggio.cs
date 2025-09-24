@@ -83,5 +83,29 @@ namespace Noleggio
             veicoliDisponibili[veicoliDisponibili.Length - 1] = v;
             return costo;
         }
+
+        public Veicolo NoleggiaMoto()
+        {
+            Veicolo veicolo = null;
+            bool trovato = false;
+            int count = 0;
+            while (!trovato)
+            {
+                if (veicoliDisponibili[count] is Moto)
+                {
+                    trovato = true;
+                    veicolo = veicoliDisponibili[count];
+                }
+                else
+                {
+                    count++;
+                }
+            }
+            veicoliDisponibili[count] = null;
+            Array.Resize(ref veicoliNoleggiati, veicoliNoleggiati.Length + 1);
+            veicoliNoleggiati[veicoliNoleggiati.Length - 1] = veicolo;
+            return veicolo;
+        }
     }
+    
 }

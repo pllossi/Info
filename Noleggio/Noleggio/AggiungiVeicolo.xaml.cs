@@ -23,7 +23,7 @@ namespace Noleggio
             {
                 Veicolo v = null;
                 if (tipo == "Bicicletta")
-                    v = new Bicicletta(targa, costo);
+                    v = new Bicicletta(targa, costo, DettaglioBox.Text);
                 else if (tipo == "Automobile")
                     v = new Automobili(targa, costo, int.Parse(DettaglioBox.Text));
                 else if (tipo == "Moto")

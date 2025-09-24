@@ -8,6 +8,7 @@
             <ComboBox x:Name="TipoVeicoloCombo" Margin="0,5,0,10">
                 <ComboBoxItem Content="Bicicletta"/>
                 <ComboBoxItem Content="Automobile"/>
+                <ComboBoxItem Content="Moto"/>
             </ComboBox>
             <TextBlock Text="Data Inizio Noleggio:"/>
             <DatePicker x:Name="DataInizioPicker" Margin="0,5,0,10"/>
