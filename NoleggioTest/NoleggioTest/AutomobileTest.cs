@@ -6,7 +6,7 @@ namespace NoleggioTest;
 public class AutomobileTest
 {
     [TestMethod]
-    public void Ctrl_ValidParameters_CreatesInstance()
+    public void Constructor_ValidParameters_CreatesInstance()
     {
         var auto = new Automobile(45.5, "AB123CD", 5);
         Assert.AreEqual(45.5, auto.PrezzoPerGiorno);
@@ -16,7 +16,7 @@ public class AutomobileTest
 
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void Ctrl_InvalidPosti_ThrowsException()
+    public void Constructor_InvalidPosti_ThrowsException()
     {
         var auto = new Automobile(30, "XY987ZT", 0);
     }

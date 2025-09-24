@@ -6,7 +6,7 @@ namespace NoleggioTest;
 public class BiciclettaTest
 {
     [TestMethod]
-    public void Ctrl_ValidParameters_CreatesInstance()
+    public void Constructor_ValidParameters_CreatesInstance()
     {
         var bici = new Bicicletta(12.5, "BICI123");
         Assert.AreEqual(12.5, bici.PrezzoPerGiorno);

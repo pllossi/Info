@@ -6,7 +6,7 @@ namespace NoleggioTest;
 public class MotociclettaTest
 {
     [TestMethod]
-    public void Ctrl_ValidParameters_CreatesInstance()
+    public void Constructor_ValidParameters_CreatesInstance()
     {
         var moto = new Motocicletta(35.0, "MOTO123", TipoCasco.INTEGRALE);
         Assert.AreEqual(35.0, moto.PrezzoPerGiorno);
