@@ -49,7 +49,7 @@ public class AutomobileTest
     }
 
     [TestMethod]
-    public void Costo_3Days_CalculatesCorrectly()
+    public void CalcolaCostoNoleggio_WithOutSale_CalculatesCorrectly()
     {
         var auto = new Automobile(70, "GH123IJ", 5);
         var Noleggio = new Noleggio(auto, 3);

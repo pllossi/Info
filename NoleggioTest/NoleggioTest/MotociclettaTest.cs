@@ -34,7 +34,7 @@ public class MotociclettaTest
     }
 
     [TestMethod]
-    public void Costo_2Days_CalculatesCorrectly()
+    public void CalcolaCostoNoleggio_2Days_CalculatesCorrectly()
     {
         var moto = new Motocicletta(30.0, "MOTO321", TipoCasco.JET);
         var Noleggio = new Noleggio(moto, 2);

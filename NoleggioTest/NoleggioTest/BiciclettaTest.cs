@@ -24,7 +24,7 @@ public class BiciclettaTest
     }
 
     [TestMethod]
-    public void Costo_4Days_CalculatesCorrectly()
+    public void CalcolaCostoNoleggio_WithOutSale_CalculatesCorrectly()
     {
         var bici = new Bicicletta(20, "BICI789");
         var Noleggio = new Noleggio(bici, 4);
@@ -33,7 +33,7 @@ public class BiciclettaTest
     }
 
     [TestMethod]
-    public void Costo_10Days_CalculatesCorrectly()
+    public void CalcolaCostoNoleggio_WithSale_CalculatesCorrectly()
     {
         var bici = new Bicicletta(10, "BICI101");
         var Noleggio = new Noleggio(bici, 10);
