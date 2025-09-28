@@ -10,8 +10,9 @@ namespace Domain.Model
     public abstract class Animal
     {
         private string _name;
-        public string Name {
-            get => _name; 
+        public string Name
+        {
+            get => _name;
             private set
             {
                 if (String.IsNullOrEmpty(_name))
@@ -19,7 +20,7 @@ namespace Domain.Model
                 _name = value;
             }
         }
-        public VeterninaryVisit[] veterninaryVisits { get; private set; }
+        public List<VeterninaryVisit> veterninaryVisits  { get; private set; }
         private string _favouriteGame;
         public string FavouriteGame
         {
@@ -31,6 +32,18 @@ namespace Domain.Model
                 _favouriteGame = value;
             }
         }
-
+        public Animal(string name, string favouriteGame)
+        {
+            Name = name;
+            FavouriteGame = favouriteGame;
+            veterninaryVisits = new List<VeterninaryVisit>();
+        }
+        public void AddVeterninaryVisit(VeterninaryVisit visit)
+        {
+            if (visit == null)
+                throw new ArgumentNullException(nameof(visit));
+            veterninaryVisits.Add(visit);
+        }
+        
     }
 }
