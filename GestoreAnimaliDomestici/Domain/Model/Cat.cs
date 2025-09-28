@@ -8,5 +8,8 @@ namespace Domain.Model
 {
     public class Cat : Animal
     {
+        public Cat(string name, string favouriteGame) : base(name, favouriteGame)
+        {
+        }
     }
 }
