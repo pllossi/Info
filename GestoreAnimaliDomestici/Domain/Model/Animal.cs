@@ -20,14 +20,15 @@ namespace Domain.Model
                 _name = value;
             }
         }
-        public List<VeterninaryVisit> veterninaryVisits  { get; private set; }
-        private string _favouriteGame;
-        public string FavouriteGame
+        private List<VeterninaryVisit> _veterninaryVisits;
+        public IReadOnlyList<VeterninaryVisit> VeterninaryVisits => _veterninaryVisits;        
+        private string? _favouriteGame;
+        public string? FavouriteGame
         {
             get => _favouriteGame;
             set
             {
-                if (String.IsNullOrEmpty(_favouriteGame))
+                if (value=="" || value== " ")
                     throw new ArgumentException(nameof(_favouriteGame));
                 _favouriteGame = value;
             }
@@ -40,7 +41,7 @@ namespace Domain.Model
         }
         public void AddVeterninaryVisit(VeterninaryVisit visit)
         {
-            if (visit == null)
+            if (visit == null || visit.Animal != this)
                 throw new ArgumentNullException(nameof(visit));
             veterninaryVisits.Add(visit);
         }

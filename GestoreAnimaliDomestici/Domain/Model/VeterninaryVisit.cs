@@ -8,15 +8,43 @@ namespace Domain.Model
 {
     public class VeterninaryVisit
     {
-        public DateTime VisitDate { get; private set; }
-        public string Description { get; private set; }
+        private string _result;
+        public string Result
+        {
+            get => _result;
+            set
+            {
+                if (String.IsNullOrEmpty(_result))
+                    throw new ArgumentException(nameof(_result));
+                _result = value;
+            }
+        }
+        private DateTime _visitDate;
+        public DateTime VisitDate 
+        { 
+            get => _visitDate;
+            private set => _visitDate = value;
+        }
+        private string _description;
+        public string Description
+        {
+            get => _description;
+            private set
+            {
+                if(value == "" || value == " ")
+                    throw new ArgumentException(nameof(_description));
+                _description = value;
+            }
+        }
 
-        public VeterninaryVisit(DateTime visitDate, string description)
+
+        public VeterninaryVisit(DateTime visitDate, string description, Animal animal)
         {
             if (String.IsNullOrEmpty(description))
                 throw new ArgumentException(nameof(description));
             VisitDate = visitDate;
             Description = description;
+            Animal = animal ?? throw new ArgumentNullException(nameof(animal));
         }
     }
 }
