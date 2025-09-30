@@ -12,14 +12,14 @@ namespace Domain.Model.Entities
         public string MasticativeToy
         {
             get => _masticativeToy;
-            set
+            private set
             {
                 if (String.IsNullOrEmpty(_masticativeToy))
                     throw new ArgumentException(nameof(_masticativeToy));
                 _masticativeToy = value;
             }
         }
-        public Dog(string name, string favouriteGame, string masticativeToy): base(name, favouriteGame)
+        public Dog(string name, string favouriteGame, string masticativeToy, string favouriteFood): base(name, null, favouriteFood, favouriteGame)
         {
             MasticativeToy = masticativeToy;
         }

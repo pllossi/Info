@@ -7,17 +7,16 @@ using System.Threading.Tasks;
 namespace Domain.Model.ValueObjects
 {
     public record Email
-    { 
-        public string Value { get; init; }
+    {
+        public string Value { get; }
+
         public Email(string value)
         {
-            if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentException("Email cannot be null or empty.", nameof(value));
-            // Simple email format validation
-            if (!value.Contains("@") || !value.Contains("."))
-                throw new ArgumentException("Invalid email format.", nameof(value));
+            if (string.IsNullOrWhiteSpace(value) || !value.Contains("@"))
+                throw new ArgumentException("Email non valida");
             Value = value;
         }
+
         public override string ToString() => Value;
     }
 }

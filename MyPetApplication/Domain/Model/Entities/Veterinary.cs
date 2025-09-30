@@ -36,7 +36,7 @@ namespace Domain.Model.Entities
             get => _phone;
             private set
             {
-                _email = value;
+                _phone = value;
             }
         }
 

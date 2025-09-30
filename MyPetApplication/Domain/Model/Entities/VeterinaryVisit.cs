@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Entities
 {
-    public class VeterninaryVisit
+    public class VeterinaryVisit
     {
         private string _result;
         public string Result
@@ -38,7 +38,7 @@ namespace Domain.Model.Entities
         }
          public Animal Animal { get; }
 
-        public VeterninaryVisit(DateTime visitDate, string description, Animal animal)
+        public VeterinaryVisit(DateTime visitDate, string description, Animal animal)
         {
             if (String.IsNullOrEmpty(description))
                 throw new ArgumentException(nameof(description));

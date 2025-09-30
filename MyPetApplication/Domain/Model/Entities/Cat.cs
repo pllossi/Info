@@ -8,7 +8,7 @@ namespace Domain.Model.Entities
 {
     public class Cat : Animal
     {
-        public Cat(string name, string favouriteGame) : base(name, favouriteGame)
+        public Cat(string name, string favouriteGame, string favouriteFood) : base(name,null,favouriteFood,favouriteGame)
         {
         }
     }
