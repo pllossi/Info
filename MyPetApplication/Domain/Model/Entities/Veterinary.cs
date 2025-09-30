@@ -8,7 +8,7 @@ using Domain.Model.ValueObjects;
 
 namespace Domain.Model.Entities
 {
-    public class Veterinary
+    public class Veterinary // codice di Boschi
     {
         private string _name;
         public string Name

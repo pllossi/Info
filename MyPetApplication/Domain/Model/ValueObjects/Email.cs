@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.ValueObjects
 {
-    public record Email
+    public record Email // codice di Boschi
     {
         public string Value { get; }
 

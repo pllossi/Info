@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Entities
 {
-    public class VeterinaryVisit
+    public class VeterinaryVisit // codice di Boschi
     {
         private string _result;
         public string Result

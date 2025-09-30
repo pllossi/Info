@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Entities
 {
-    public class Dog : Animal
+    public class Dog : Animal // codice di Boschi
     {
         private string _masticativeToy;
         public string MasticativeToy

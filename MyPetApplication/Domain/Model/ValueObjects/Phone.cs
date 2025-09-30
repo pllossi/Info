@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.ValueObjects
 {
-    public record Phone
+    public record Phone // codice di Boschi
     {
         public string Value { get; init; }
         public Phone(string value)
@@ -21,4 +21,3 @@ namespace Domain.Model.ValueObjects
         public override string ToString() => Value;
     }
 }
-// codice di Boschi
