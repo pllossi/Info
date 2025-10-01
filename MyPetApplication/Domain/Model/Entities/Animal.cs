@@ -9,6 +9,17 @@ namespace Domain.Model.Entities
 {
     public abstract class Animal
     {
+        private string? _breed;
+        public string? Breed
+        {
+            get => _breed;
+            private set
+            {
+                if(value=="" || value == " ")
+                    throw new ArgumentException("Non può essere solo spazi bianchi");
+                _breed = value;
+            }
+        }
         private string _name;
         public string Name
         {
@@ -59,12 +70,14 @@ namespace Domain.Model.Entities
 
 
         // Costruttore che riceve la lista
-        public Animal(string name, List<VeterinaryVisit> visits = null, string favouriteFood = null, string favouriteGame=null)
+        public Animal(string name, string? breed = null, List<VeterinaryVisit> visits = null, string favouriteFood = null, string favouriteGame = null)
         {
             // qui è perfettamente valido assegnare il campo readonly perchè siamo nel costruttore
             _visitList = visits ?? new List<VeterinaryVisit>();
             FavouriteFood = favouriteFood;
             FavouriteGame = favouriteGame;
+            Breed = breed;
+            Name = name;
         }
 
         public void AddVisit(VeterinaryVisit visit)

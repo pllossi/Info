@@ -14,7 +14,7 @@ namespace Domain.Model.ValueObjects
             if (string.IsNullOrWhiteSpace(value))
                 throw new ArgumentException("Phone number cannot be null or empty.", nameof(value));
             // Simple phone format validation (you can enhance this as needed)
-            if (!value.All(c => char.IsDigit(c) || c == '+' || c == '-' || c == ' '))
+            if (!value.All(c => char.IsDigit(c) || c == '+' || c == '-' || c == ' ')&& value.Length < 7)
                 throw new ArgumentException("Invalid phone number format.", nameof(value));
             Value = value;
         }

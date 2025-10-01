@@ -8,7 +8,7 @@ namespace Domain.Model.Entities
 {
     public class Cat : Animal // codice di Boschi
     {
-        public Cat(string name, string favouriteGame, string favouriteFood) : base(name,null,favouriteFood,favouriteGame)
+        public Cat(string name,string? breed, string favouriteGame, string favouriteFood) : base(name, breed ,null,favouriteFood,favouriteGame)
         {
         }
     }

@@ -19,7 +19,7 @@ namespace Domain.Model.Entities
                 _masticativeToy = value;
             }
         }
-        public Dog(string name, string favouriteGame, string masticativeToy, string favouriteFood): base(name, null, favouriteFood, favouriteGame)
+        public Dog(string name, string? breed , string favouriteGame, string masticativeToy, string favouriteFood): base(name, breed , null, favouriteFood, favouriteGame)
         {
             MasticativeToy = masticativeToy;
         }
