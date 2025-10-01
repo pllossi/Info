@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Model.ValueObjects;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,27 +50,37 @@ namespace Domain.Model.Entities
 
         /*
          * readonly protegge il riferimento alla lista, non il contenuto.
-         * La mutabilità dei dati all’interno della lista è ancora
-         * consentita.
+         * La mutabilità dei dati all’interno della lista è ancora 
+         * consentita. 
          * Se fa parte dello stato mettiamo IReadOnlyList nella proprietà
          * Come il val in Kotlin sugli array
          */
         private readonly List<VeterinaryVisit> _visitList;
         public IReadOnlyList<VeterinaryVisit> VisitList => _visitList;
 
+        public string? Breed { get; private set; }
+
+        public Birthdate Birthday { get; private set; }
 
         // Costruttore che riceve la lista
-        public Animal(string name, List<VeterinaryVisit> visits = null, string favouriteFood = null, string favouriteGame=null)
+        public Animal(string name, List<VeterinaryVisit> visits = null)
         {
             // qui è perfettamente valido assegnare il campo readonly perchè siamo nel costruttore
             _visitList = visits ?? new List<VeterinaryVisit>();
-            FavouriteFood = favouriteFood;
-            FavouriteGame = favouriteGame;
+            Name = name;
+        }
+
+        public Animal(string name, Birthdate birthdate, string breed, List<VeterinaryVisit>? visits = null)
+            : this(name, visits)
+        {            
+            Breed = breed;
+            Birthday = birthdate;
         }
 
         public void AddVisit(VeterinaryVisit visit)
         {
             if (visit == null) throw new ArgumentNullException(nameof(visit));
+            
             if (visit.Animal.Equals(this))
                 _visitList.Add(visit);
             else throw new ArgumentException("animal wrong");

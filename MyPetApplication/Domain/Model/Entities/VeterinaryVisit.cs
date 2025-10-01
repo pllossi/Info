@@ -6,45 +6,31 @@ using System.Threading.Tasks;
 
 namespace Domain.Model.Entities
 {
-    public class VeterinaryVisit // codice di Boschi
+    public enum VisitResults
     {
-        private string _result;
-        public string Result
-        {
-            get => _result;
-            set
-            {
-                if (String.IsNullOrEmpty(_result))
-                    throw new ArgumentException(nameof(_result));
-                _result = value;
-            }
-        }
-        private DateTime _visitDate;
-        public DateTime VisitDate 
-        { 
-            get => _visitDate;
-            private set => _visitDate = value;
-        }
-        private string _description;
-        public string Description
-        {
-            get => _description;
-            private set
-            {
-                if(value == "" || value == " ")
-                    throw new ArgumentException(nameof(_description));
-                _description = value;
-            }
-        }
-         public Animal Animal { get; }
+        POSITIVE,
+        NEGATIVE,
+        WAITING,
+        CHECK_NOTES
+    }
+    public class VeterinaryVisit
+    {
+        public Animal Animal { get; private set; }
+        public Veterinary Veterinary { get; private set; }
+        public DateTime Date { get; private set; }
+        public string? Notes { get; private set; }
+        public VisitResults Results { get; private set; }
 
-        public VeterinaryVisit(DateTime visitDate, string description, Animal animal)
+        public VeterinaryVisit(Animal animal, Veterinary veterinary, DateTime date, VisitResults result, string? notes = null)
         {
-            if (String.IsNullOrEmpty(description))
-                throw new ArgumentException(nameof(description));
-            VisitDate = visitDate;
-            Description = description;
-            Animal = animal ?? throw new ArgumentNullException(nameof(animal));
+            Animal = animal;
+            Veterinary = veterinary;
+            Date = date;
+            Results = result;
+            Notes = notes;
         }
+
+        public override string ToString() =>
+            $"{Date.ToShortDateString()} - {Animal.Name} visited by {Veterinary.Name}";
     }
 }
