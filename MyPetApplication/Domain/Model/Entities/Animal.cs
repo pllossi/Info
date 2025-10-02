@@ -10,6 +10,17 @@ namespace Domain.Model.Entities
 {
     public abstract class Animal
     {
+        private string? _breed;
+        public string? Breed
+        {
+            get => _breed;
+            private set
+            {
+                if(value=="" || value == " ")
+                    throw new ArgumentException("Non può essere solo spazi bianchi");
+                _breed = value;
+            }
+        }
         private string _name;
         public string Name
         {
