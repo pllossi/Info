@@ -25,3 +25,6 @@ Tutti gli animali devono avere un nome e per ogni animale deve essere possibile 
 Deve essere possibile visualizzare tutte le visite effettuate oppure l'ultima vista effettuata e per ogni animale deve essere memorizzato l'alimento preferito ed il gioco preferito. Nel caso di Moxa si vuole memorizzare anche il masticativo preferito.
 #### Richieste Particolari
 - diagramma dei casi d'uso
+### Esempio6-10-25
+#### Scopo del progetto
+Il progetto ha lo scopo di farci vedere 
