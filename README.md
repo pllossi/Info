@@ -25,6 +25,18 @@ Tutti gli animali devono avere un nome e per ogni animale deve essere possibile 
 Deve essere possibile visualizzare tutte le visite effettuate oppure l'ultima vista effettuata e per ogni animale deve essere memorizzato l'alimento preferito ed il gioco preferito. Nel caso di Moxa si vuole memorizzare anche il masticativo preferito.
 #### Richieste Particolari
 - diagramma dei casi d'uso
-### Esempio6-10-25
-#### Scopo del progetto
-Il progetto ha lo scopo di farci vedere 
+### ExtensionMethod
+#### Testo del problema
+Prepara gli  Extension Method per la classe DateTime che implementi i seguenti metodi:
+- un metodo chiamato GetSeason() che restituisca una stringa (o un valore enum, se preferisci) che indichi la stagione in cui cade la data.  
+-  un metodo  IsSummer(). Questo metodo dovrebbe restituire true se la data cade in estate false altrimenti
+- un metodo DaysUntilNextSeason() che calcoli e restituisca il numero di giorni che mancano dalla data corrente fino all'inizio della prossima stagione.
+
+
+STAGIONI:
+Estate (Summer): 21 Giugno - 20 Settembre
+Autunno (Autumn): 21 Settembre - 20 Dicembre
+Inverno (Winter): 21 Dicembre - 20 Marzo
+Primavera (Spring): 21 Marzo - 20 Giugno
+
+Considera e testa i casi limite (come il 29 Febbraio negli anni bisestili) e le date di cambio stagione (es. 20 Giugno, 21 Giugno, 20 Marzo, 21 Marzo). Scrivi dei test unitari  per assicurarti che i tuoi metodi gestiscano correttamente queste date.
