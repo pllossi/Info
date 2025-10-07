@@ -11,78 +11,78 @@ namespace ExtensionMethodTests
         [TestMethod]
         public void GetSeason_ReturnsSpring_OnSpringEquinox()
         {
-            var date = new DateTime(2024, 3, 21);
-            var result = date.GetSeason();
+            DateTime date = new DateTime(2024, 3, 21);
+            Season  result = date.GetSeason();
             Assert.AreEqual(Season.SPRING, result);
         }
 
         [TestMethod]
         public void GetSeason_ReturnsSummer_OnSummerSolstice()
         {
-            var date = new DateTime(2024, 6, 21);
-            var result = date.GetSeason();
+            DateTime date = new DateTime(2024, 6, 21);
+            Season result = date.GetSeason();
             Assert.AreEqual(Season.SUMMER, result);
         }
 
         [TestMethod]
         public void GetSeason_ReturnsAutumn_OnAutumnEquinox()
         {
-            var date = new DateTime(2024, 9, 21);
-            var result = date.GetSeason();
+            DateTime date = new DateTime(2024, 9, 21);
+            Season result = date.GetSeason();
             Assert.AreEqual(Season.AUTUMN, result);
         }
 
         [TestMethod]
         public void GetSeason_ReturnsWinter_OnWinterSolstice()
         {
-            var date = new DateTime(2024, 12, 21);
-            var result = date.GetSeason();
+            DateTime date = new DateTime(2024, 12, 21);
+            Season result = date.GetSeason();
             Assert.AreEqual(Season.WINTER, result);
         }
 
         [TestMethod]
         public void GetSeason_ReturnsWinter_BeforeSpringEquinox()
         {
-            var date = new DateTime(2024, 3, 20);
-            var result = date.GetSeason();
+            DateTime date = new DateTime(2024, 3, 20);
+            Season result = date.GetSeason();
             Assert.AreEqual(Season.WINTER, result);
         }
 
         [TestMethod]
         public void IsSummer_ReturnsTrue_OnSummerSolstice()
         {
-            var date = new DateTime(2024, 6, 21);
+            DateTime date = new DateTime(2024, 6, 21);
             Assert.IsTrue(date.IsSummer());
         }
 
         [TestMethod]
         public void IsSummer_ReturnsFalse_OnSpringEquinox()
         {
-            var date = new DateTime(2024, 3, 21);
+            DateTime date = new DateTime(2024, 3, 21);
             Assert.IsFalse(date.IsSummer());
         }
 
         [TestMethod]
         public void DaysUtilNextSeason_FromSpringEquinox()
         {
-            var date = new DateTime(2024, 3, 21);
-            var days = date.DaysUtilNextSeason();
+            DateTime date = new DateTime(2024, 3, 21);
+            int days = date.DaysUtilNextSeason();
             Assert.AreEqual((new DateTime(2024, 6, 21) - date).Days, days);
         }
 
         [TestMethod]
         public void DaysUtilNextSeason_FromWinterSolstice()
         {
-            var date = new DateTime(2024, 12, 21);
-            var days = date.DaysUtilNextSeason();
+            DateTime date = new DateTime(2024, 12, 21);
+            int days = date.DaysUtilNextSeason();
             Assert.AreEqual((new DateTime(2025, 3, 21) - date).Days, days);
         }
 
         [TestMethod]
         public void DaysUtilNextSeason_FromLastDayOfWinter()
         {
-            var date = new DateTime(2024, 3, 20);
-            var days = date.DaysUtilNextSeason();
+            DateTime date = new DateTime(2024, 3, 20);
+            int days = date.DaysUtilNextSeason();
             Assert.AreEqual((new DateTime(2024, 3, 21) - date).Days, days);
         }
     }
