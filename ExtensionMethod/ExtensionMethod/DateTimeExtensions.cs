@@ -11,14 +11,25 @@
     {
         public static Season GetSeason(this DateTime date)
         {
-            return date.Month switch
-            {
-                12 or 1 or 2 => Season.Winter,
-                3 or 4 or 5 => Season.Spring,
-                6 or 7 or 8 => Season.Summer,
-                9 or 10 or 11 => Season.Autumn,
-                _ => throw new ArgumentOutOfRangeException(nameof(date), "Invalid month")
-            };
+            var year = date.Year;
+            var springStart = new DateTime(year, 3, 21);
+            var summerStart = new DateTime(year, 6, 21);
+            var autumnStart = new DateTime(year, 9, 21);
+            var winterStart = new DateTime(year, 12, 21);
+
+            if (date >= springStart && date < summerStart)
+                return Season.Spring;
+            if (date >= summerStart && date < autumnStart)
+                return Season.Summer;
+            if (date >= autumnStart && date < winterStart)
+                return Season.Autumn;
+
+            // Handle Winter, including dates from the previous year  
+            var nextYearWinterStart = new DateTime(year + 1, 3, 21);
+            if (date >= winterStart || date < nextYearWinterStart)
+                return Season.Winter;
+
+            throw new ArgumentOutOfRangeException(nameof(date), "Invalid date");
         }
 
         public static bool IsSummer(this DateTime date)
@@ -26,22 +37,31 @@
             return date.GetSeason() == Season.Summer;
         }
 
-        public static int DaysUntilNextSeason(this DateTime date) {
-            var currentSeason = date.GetSeason();
-            var nextSeasonStartMonth = currentSeason switch
+        public static int DaysUtilNextSeason(this DateTime date)
+        {
+            var year = date.Year;
+            DateTime nextSeasonStart;
+            switch (date.GetSeason())
             {
-                Season.Winter => 3,
-                Season.Spring => 6,
-                Season.Summer => 9,
-                Season.Autumn => 12,
-                _ => throw new ArgumentOutOfRangeException(nameof(date), "Invalid season")
-            };
-            var nextSeasonStartDate = new DateTime(date.Year, nextSeasonStartMonth, 1);
-            if (nextSeasonStartDate <= date)
-            {
-                nextSeasonStartDate = nextSeasonStartDate.AddYears(1);
+                case Season.Spring:
+                    nextSeasonStart = new DateTime(year, 6, 21);
+                    break;
+                case Season.Summer:
+                    nextSeasonStart = new DateTime(year, 9, 21);
+                    break;
+                case Season.Autumn:
+                    nextSeasonStart = new DateTime(year, 12, 21);
+                    break;
+                case Season.Winter:
+                    if(date.Month == 12)
+                        nextSeasonStart = new DateTime(year + 1, 3, 21);
+                    else
+                        nextSeasonStart = new DateTime(year, 3, 21);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            return (nextSeasonStartDate - date).Days;
+            return (nextSeasonStart - date).Days;
         }
     }
 }
