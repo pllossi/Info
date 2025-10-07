@@ -13,7 +13,7 @@ namespace ExtensionMethodTests
         {
             var date = new DateTime(2024, 3, 21);
             var result = date.GetSeason();
-            Assert.AreEqual(Season.Spring, result);
+            Assert.AreEqual(Season.SPRING, result);
         }
 
         [TestMethod]
@@ -21,7 +21,7 @@ namespace ExtensionMethodTests
         {
             var date = new DateTime(2024, 6, 21);
             var result = date.GetSeason();
-            Assert.AreEqual(Season.Summer, result);
+            Assert.AreEqual(Season.SUMMER, result);
         }
 
         [TestMethod]
@@ -29,7 +29,7 @@ namespace ExtensionMethodTests
         {
             var date = new DateTime(2024, 9, 21);
             var result = date.GetSeason();
-            Assert.AreEqual(Season.Autumn, result);
+            Assert.AreEqual(Season.AUTUMN, result);
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace ExtensionMethodTests
         {
             var date = new DateTime(2024, 12, 21);
             var result = date.GetSeason();
-            Assert.AreEqual(Season.Winter, result);
+            Assert.AreEqual(Season.WINTER, result);
         }
 
         [TestMethod]
@@ -45,7 +45,7 @@ namespace ExtensionMethodTests
         {
             var date = new DateTime(2024, 3, 20);
             var result = date.GetSeason();
-            Assert.AreEqual(Season.Winter, result);
+            Assert.AreEqual(Season.WINTER, result);
         }
 
         [TestMethod]

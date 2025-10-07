@@ -2,10 +2,10 @@
 {
     public enum Season
     {
-        Winter,
-        Spring,
-        Summer,
-        Autumn
+        WINTER,
+        SPRING,
+        SUMMER,
+        AUTUMN
     }
     public static class DateTimeExtensions
     {
@@ -18,22 +18,22 @@
             var winterStart = new DateTime(year, 12, 21);
 
             if (date >= springStart && date < summerStart)
-                return Season.Spring;
+                return Season.SPRING;
             if (date >= summerStart && date < autumnStart)
-                return Season.Summer;
+                return Season.SUMMER;
             if (date >= autumnStart && date < winterStart)
-                return Season.Autumn;
+                return Season.AUTUMN;
 
             var nextYearWinterStart = new DateTime(year + 1, 3, 21);
             if (date >= winterStart || date < nextYearWinterStart)
-                return Season.Winter;
+                return Season.WINTER;
 
             throw new ArgumentOutOfRangeException(nameof(date), "Invalid date");
         }
 
         public static bool IsSummer(this DateTime date)
         {
-            return date.GetSeason() == Season.Summer;
+            return date.GetSeason() == Season.SUMMER;
         }
 
         public static int DaysUtilNextSeason(this DateTime date)
@@ -42,16 +42,16 @@
             DateTime nextSeasonStart;
             switch (date.GetSeason())
             {
-                case Season.Spring:
+                case Season.SPRING:
                     nextSeasonStart = new DateTime(year, 6, 21);
                     break;
-                case Season.Summer:
+                case Season.SUMMER:
                     nextSeasonStart = new DateTime(year, 9, 21);
                     break;
-                case Season.Autumn:
+                case Season.AUTUMN:
                     nextSeasonStart = new DateTime(year, 12, 21);
                     break;
-                case Season.Winter:
+                case Season.WINTER:
                     if(date.Month == 12)
                         nextSeasonStart = new DateTime(year + 1, 3, 21);
                     else
