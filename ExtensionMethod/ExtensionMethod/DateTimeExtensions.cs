@@ -24,7 +24,6 @@
             if (date >= autumnStart && date < winterStart)
                 return Season.Autumn;
 
-            // Handle Winter, including dates from the previous year  
             var nextYearWinterStart = new DateTime(year + 1, 3, 21);
             if (date >= winterStart || date < nextYearWinterStart)
                 return Season.Winter;
