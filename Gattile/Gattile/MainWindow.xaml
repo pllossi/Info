@@ -1,0 +1,19 @@
+﻿<Window x:Class="Gattile.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gattile"
+        mc:Ignorable="d"
+        Title="PaginaIniziale" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="lblPrincInizio" Content="Gattile" HorizontalAlignment="Center" Margin="0,43,0,0" VerticalAlignment="Top" Width="94" FontSize="29"/>
+        <Label Content="Gatti attualmente presenti nel gattile:" HorizontalAlignment="Left" Height="36" Margin="204,143,0,0" VerticalAlignment="Top" Width="243" FontSize="20"/>
+        <Label x:Name="lblNumGatti" Content="{Binding NumeroGatti}" HorizontalAlignment="Left" Height="36" Margin="452,143,0,0" VerticalAlignment="Top" Width="78" FontSize="20"/>
+        <Button x:Name="btnNuovaAdozione" Content="Adotta Gatto" HorizontalAlignment="Left" Height="51" Margin="339,295,0,0" VerticalAlignment="Top" Width="108" Click="btnNuovaAdozione_Click"/>
+        <Button x:Name="btnNuovoGatto" Content="Registra Gatto" HorizontalAlignment="Left" Height="51" Margin="612,295,0,0" VerticalAlignment="Top" Width="108" Click="btnNuovoGatto_Click"/>
+        <Button x:Name="btnVisualizzaAdozioni" Content="Mostra Lista Gatti" HorizontalAlignment="Left" Height="51" Margin="475,295,0,0" VerticalAlignment="Top" Width="108" Click="btnVisualizzaAdozioni_Click"/>
+        <Button x:Name="btnAdozioneFallita" Content="Restituisci Gatto" HorizontalAlignment="Left" Height="51" Margin="72,295,0,0" VerticalAlignment="Top" Width="108" Click="btnAdozioneFallita_Click"/>
+        <Button x:Name="btnNuovoAdottante" Content="Nuovo Adottante" Click="btnNuovoAdottante_Click" Width="108" Margin="204,295,488,88" Height="51"/>
+    </Grid>
+</Window>
