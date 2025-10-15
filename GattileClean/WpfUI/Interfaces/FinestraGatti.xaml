@@ -1,0 +1,8 @@
+﻿<Window x:Class="Gattile.FinestraGatti"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gatti Presenti" Height="350" Width="400">
+    <Grid Margin="10">
+        <ListBox x:Name="lstGatti" DisplayMemberPath="Nome" />
+    </Grid>
+</Window>
