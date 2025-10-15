@@ -1,0 +1,8 @@
+﻿<Window x:Class="Gattile.FinestraAdozioni"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Adozioni" Height="350" Width="500">
+    <Grid Margin="10">
+        <ListBox x:Name="lstAdozioni"/>
+    </Grid>
+</Window>
