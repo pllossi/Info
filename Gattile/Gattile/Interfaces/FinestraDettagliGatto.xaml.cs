@@ -2,7 +2,7 @@
 using System;
 using System.Windows;
 
-namespace Gattile
+namespace GattileUI
 {
     /// <summary>
     /// Logica di interazione per FinestraDettagliGatto.xaml

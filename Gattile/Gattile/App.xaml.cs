@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace Gattile
+namespace GattileUI
 {
     /// <summary>
     /// Interaction logic for App.xaml

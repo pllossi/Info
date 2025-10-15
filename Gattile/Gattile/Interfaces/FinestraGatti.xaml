@@ -1,4 +1,4 @@
-﻿<Window x:Class="Gattile.FinestraGatti"
+﻿<Window x:Class="GattileUI.FinestraGatti"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Gatti Presenti" Height="350" Width="400">

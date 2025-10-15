@@ -1,8 +1,9 @@
-﻿using Gattile;
+﻿using GattileUI;
 using System.Windows;
 using System.ComponentModel;
 
-namespace Gattile
+
+namespace GattileUI
 {
     public partial class MainWindow : Window, INotifyPropertyChanged
     {

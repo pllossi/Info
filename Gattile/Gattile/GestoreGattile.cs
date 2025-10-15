@@ -2,7 +2,7 @@
 using System.IO;
 using GattileLib;
 
-namespace Gattile
+namespace GattileUI
 {
     public class GestoreGattile
     {

@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gattile", "Gattile\Gattile.csproj", "{04422645-C122-48AE-95A7-9C71B9AAE173}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GattileUI", "Gattile\GattileUI.csproj", "{04422645-C122-48AE-95A7-9C71B9AAE173}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GattileLib", "GattileLib\GattileLib.csproj", "{3B86170F-59B5-4667-B60F-C50162A77BE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8A9E0581-7961-453A-B41E-C904DA4695DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +26,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{04422645-C122-48AE-95A7-9C71B9AAE173} = {8A9E0581-7961-453A-B41E-C904DA4695DB}
+		{3B86170F-59B5-4667-B60F-C50162A77BE0} = {8A9E0581-7961-453A-B41E-C904DA4695DB}
 	EndGlobalSection
 EndGlobal

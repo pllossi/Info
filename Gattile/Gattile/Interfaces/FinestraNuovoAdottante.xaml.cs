@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using GattileLib;
 
-namespace Gattile
+namespace GattileUI
 {
     public partial class FinestraNuovoAdottante : Window
     {

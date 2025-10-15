@@ -1,4 +1,4 @@
-﻿<Window x:Class="Gattile.FinestraNuovoGatto"
+﻿<Window x:Class="GattileUI.FinestraNuovoGatto"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Nuovo Gatto" Height="216" Width="400">

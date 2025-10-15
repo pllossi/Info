@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Gattile
+namespace GattileUI
 {
     public partial class FinestraAdozioni : Window
     {

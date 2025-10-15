@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 
-namespace Gattile
+namespace GattileUI
 {
     public partial class FinestraGatti : Window
     {
