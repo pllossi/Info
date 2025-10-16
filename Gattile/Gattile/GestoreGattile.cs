@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using System.IO;
-using GattileLib;
+using Domain.Entities;
 
 namespace GattileUI
 {

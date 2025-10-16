@@ -1,4 +1,4 @@
-﻿using GattileLib;
+﻿using Domain.Entities;
 using System.Windows;
 
 namespace GattileUI
