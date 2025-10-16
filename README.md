@@ -40,3 +40,14 @@ Inverno (Winter): 21 Dicembre - 20 Marzo
 Primavera (Spring): 21 Marzo - 20 Giugno
 
 Considera e testa i casi limite (come il 29 Febbraio negli anni bisestili) e le date di cambio stagione (es. 20 Giugno, 21 Giugno, 20 Marzo, 21 Marzo). Scrivi dei test unitari  per assicurarti che i tuoi metodi gestiscano correttamente queste date.
+
+### Gattile
+#### Testo del problema
+Rivedere bene metodi di estensione e dictionary, ereditarietà e abstract
+
+Riprendere l'esercizio estivo del gattile e fare:
+
+   -diagramma dei casi d'uso
+   -domain del progetto
+   -test del domain
+   -se avete ancora tempo impostare il livello application con dto, mapper, interfacce e usecase
