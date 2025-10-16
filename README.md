@@ -47,7 +47,7 @@ Rivedere bene metodi di estensione e dictionary, ereditarietà e abstract
 
 Riprendere l'esercizio estivo del gattile e fare:
 
-   -diagramma dei casi d'uso
-   -domain del progetto
-   -test del domain
-   -se avete ancora tempo impostare il livello application con dto, mapper, interfacce e usecase
+   - diagramma dei casi d'uso
+   - domain del progetto
+   - test del domain
+   - se avete ancora tempo impostare il livello application con dto, mapper, interfacce e usecase
