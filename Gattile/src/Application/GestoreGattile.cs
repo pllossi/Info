@@ -2,7 +2,7 @@
 using System.IO;
 using Domain.Entities;
 
-namespace GattileUI
+namespace Application
 {
     public class GestoreGattile
     {
