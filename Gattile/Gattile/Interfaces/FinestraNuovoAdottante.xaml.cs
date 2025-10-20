@@ -1,5 +1,7 @@
 ﻿using System.Windows;
-using Domain;
+using Domain.Entities;
+using Domain.ValueObjects;
+using Application;
 
 namespace GattileUI
 {
@@ -15,26 +17,30 @@ namespace GattileUI
 
         private void btnSalva_Click(object sender, RoutedEventArgs e)
         {
-        
             try
             {
-                if (txtNome.Text == "" || txtCognome.Text == "" || (txtTelefono.Text == "" && txtEmail.Text == ""))
+                if (string.IsNullOrWhiteSpace(txtNome.Text) || string.IsNullOrWhiteSpace(txtCognome.Text) ||
+                    (string.IsNullOrWhiteSpace(txtTelefono.Text) && string.IsNullOrWhiteSpace(txtEmail.Text)))
                 {
                     throw new ArgumentException();
                 }
-                var adottante = new Adottante
-                {
-                    Nome = txtNome.Text,
-                    Cognome = txtCognome.Text,
-                    Telefono = txtTelefono.Text,
-                    Email = txtEmail.Text
-                };
+
+                var telefono = string.IsNullOrWhiteSpace(txtTelefono.Text) ? null : new PhoneNumber(txtTelefono.Text);
+                var email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : new Email(txtEmail.Text);
+
+                var adottante = new Adottante(
+                    txtNome.Text,
+                    txtCognome.Text,
+                    telefono,
+                    email
+                );
+
                 gestore.InserisciAdottante(adottante);
             }
             catch (ArgumentException)
             {
                 MessageBox.Show("Controlla i campi inseriti.");
-            }   
+            }
             Close();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using System;
 using System.Windows;
+using Application;
 
 namespace GattileUI
 {
