@@ -12,6 +12,9 @@ namespace Domain.Entities
         private string _surname;
         private PhoneNumber _telefono;
         private Email _email;
+        private CodiceFiscale _codiceFiscale;
+        private string _cap;
+        private string _città;
         public string Name 
         { 
             get=> _name;
@@ -48,13 +51,23 @@ namespace Domain.Entities
                 _email = value;
             }
         }
+        public CodiceFiscale CodiceFiscale 
+        { 
+            get => _codiceFiscale;
+            private set {
+                if (value == null)
+                    throw new ArgumentNullException("Il codice fiscale non può essere nullo.");
+                _codiceFiscale = value;
+            }
+        }
 
-        public Adottante(string name,string surname,PhoneNumber? number, Email? email) {
+        public Adottante(string name,string surname,PhoneNumber? number, Email? email, CodiceFiscale codiceFiscale) {
             Name = name;
             Surname = surname;
             if(number == null&&email==null) throw new ArgumentNullException("Il numero di telefono e l'email non possono essere nulle.");
             Telefono = number;
             Email = email;
+            CodiceFiscale = codiceFiscale;
         }
 
 
