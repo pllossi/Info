@@ -104,13 +104,13 @@ namespace Domain.Entities
             string codice;
             do
             {
-                int numero = rnd.Next(10000, 99999); // 5 cifre  
+                int numero = rnd.Next(10000, 99999);  
                 char primaLetteraMese = DataArrivoGattile.ToString("MMM")[0];
                 string anno = DataArrivoGattile.Year.ToString();
                 string lettereRandom = new string(Enumerable.Range(0, 3)
                     .Select(_ => (char)rnd.Next(65, 91)).ToArray());
                 codice = $"{numero}{primaLetteraMese}{anno}{lettereRandom}";
-            } while (!CodiciGenerati.Add(codice)); // Assicura unicità  
+            } while (!CodiciGenerati.Add(codice));  
 
             return codice;
         }
