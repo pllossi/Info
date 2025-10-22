@@ -12,7 +12,7 @@ namespace Domain.Entities
         private string _surname;
         private PhoneNumber _telefono;
         private Email _email;
-        private CodiceFiscale _codiceFiscale;
+        private TaxId _codiceFiscale;
         private string _cap;
         private string _città;
         public string Name 
@@ -51,7 +51,7 @@ namespace Domain.Entities
                 _email = value;
             }
         }
-        public CodiceFiscale CodiceFiscale 
+        public TaxId CodiceFiscale 
         { 
             get => _codiceFiscale;
             private set {
@@ -61,7 +61,7 @@ namespace Domain.Entities
             }
         }
 
-        public Adottante(string name,string surname,PhoneNumber? number, Email? email, CodiceFiscale codiceFiscale) {
+        public Adottante(string name,string surname,PhoneNumber? number, Email? email, TaxId codiceFiscale) {
             Name = name;
             Surname = surname;
             if(number == null&&email==null) throw new ArgumentNullException("Il numero di telefono e l'email non possono essere nulle.");

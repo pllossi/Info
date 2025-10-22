@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.ValueObjects
 {
-    public record CodiceFiscale
+    public record TaxId
     {
         public string Value { get; }
         /// <summary>
@@ -14,7 +14,7 @@ namespace Domain.ValueObjects
         /// </summary>
         /// <param name="value"></param>
         /// <exception cref="ArgumentException"></exception>
-        public CodiceFiscale(string value)
+        public TaxId(string value)
         {
             if (string.IsNullOrWhiteSpace(value) || value.Length != 16)
                 throw new ArgumentException("Codice Fiscale non valido deve essere lungo 16 caratteri.");
