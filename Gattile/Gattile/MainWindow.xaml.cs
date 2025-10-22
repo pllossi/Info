@@ -3,23 +3,22 @@ using System.Windows;
 using System.ComponentModel;
 using Application;
 
-
 namespace GattileUI
 {
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        GestoreGattile gestore = new GestoreGattile();
+        ShelterManager manager = new ShelterManager();
 
-        private int _numeroGatti;
-        public int NumeroGatti
+        private int _catCount;
+        public int CatCount
         {
-            get => _numeroGatti;
+            get => _catCount;
             set
             {
-                if (_numeroGatti != value)
+                if (_catCount != value)
                 {
-                    _numeroGatti = value;
-                    OnPropertyChanged(nameof(NumeroGatti));
+                    _catCount = value;
+                    OnPropertyChanged(nameof(CatCount));
                 }
             }
         }
@@ -28,51 +27,51 @@ namespace GattileUI
         {
             InitializeComponent();
             DataContext = this;
-            AggiornaNumeroGatti();
+            UpdateCatCount();
         }
 
-        public void AggiornaNumeroGatti()
+        public void UpdateCatCount()
         {
-            NumeroGatti = gestore.gattiPresenti.Count;
+            CatCount = manager.presentCats.Count;
         }
 
-        private void btnVisualizzaGatti_Click(object sender, RoutedEventArgs e)
+        private void btnViewCats_Click(object sender, RoutedEventArgs e)
         {
-            var finestra = new FinestraGatti(gestore);
-            finestra.Show();
+            var window = new CatsWindow(manager);
+            window.Show();
         }
 
-        private void btnNuovoGatto_Click(object sender, RoutedEventArgs e)
+        private void btnNewCat_Click(object sender, RoutedEventArgs e)
         {
-            var finestra = new FinestraNuovoGatto(gestore);
-            finestra.ShowDialog();
-            AggiornaNumeroGatti();
+            var window = new NewCatWindow(manager);
+            window.ShowDialog();
+            UpdateCatCount();
         }
 
-        private void btnVisualizzaAdozioni_Click(object sender, RoutedEventArgs e)
+        private void btnViewAdoptions_Click(object sender, RoutedEventArgs e)
         {
-            var finestra = new FinestraAdozioni(gestore);
-            finestra.ShowDialog();
+            var window = new AdoptionsWindow(manager);
+            window.ShowDialog();
         }
 
-        private void btnNuovaAdozione_Click(object sender, RoutedEventArgs e)
+        private void btnNewAdoption_Click(object sender, RoutedEventArgs e)
         {
-            var finestra = new FinestraNuovaAdozione(gestore);
-            finestra.ShowDialog();
-            AggiornaNumeroGatti();
+            var window = new NewAdoptionWindow(manager);
+            window.ShowDialog();
+            UpdateCatCount();
         }
 
-        private void btnAdozioneFallita_Click(object sender, RoutedEventArgs e)
+        private void btnFailedAdoption_Click(object sender, RoutedEventArgs e)
         {
-            var finestra = new FinestraAdozioneFallita(gestore);
-            finestra.ShowDialog();
-            AggiornaNumeroGatti();
+            var window = new FailedAdoptionWindow(manager);
+            window.ShowDialog();
+            UpdateCatCount();
         }
 
-        private void btnNuovoAdottante_Click(object sender, RoutedEventArgs e)
+        private void btnNewAdopter_Click(object sender, RoutedEventArgs e)
         {
-            var finestra = new FinestraNuovoAdottante(gestore);
-            finestra.ShowDialog();
+            var window = new NewAdopterWindow(manager);
+            window.ShowDialog();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
