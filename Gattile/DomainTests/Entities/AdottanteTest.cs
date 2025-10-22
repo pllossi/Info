@@ -11,7 +11,7 @@ public class AdottanteTest
     {
         var telefono = new PhoneNumber("3331234567");
         var email = new Email("test@email.com");
-        var codiceFiscale = new CodiceFiscale("RSSMRA80A01H501U");
+        var codiceFiscale = new TaxId("RSSMRA80A01H501U");
 
         var adottante = new Adottante("Mario", "Rossi", telefono, email, codiceFiscale);
 
@@ -28,7 +28,7 @@ public class AdottanteTest
     {
         var telefono = new PhoneNumber("3331234567");
         var email = new Email("test@email.com");
-        var codiceFiscale = new CodiceFiscale("RSSMRA80A01H501U");
+        var codiceFiscale = new TaxId("RSSMRA80A01H501U");
 
         var _ = new Adottante("", "Rossi", telefono, email, codiceFiscale);
     }
@@ -39,7 +39,7 @@ public class AdottanteTest
     {
         var telefono = new PhoneNumber("3331234567");
         var email = new Email("test@email.com");
-        var codiceFiscale = new CodiceFiscale("RSSMRA80A01H501U");
+        var codiceFiscale = new TaxId("RSSMRA80A01H501U");
 
         var _ = new Adottante("Mario", "", telefono, email, codiceFiscale);
     }
@@ -48,7 +48,7 @@ public class AdottanteTest
     [ExpectedException(typeof(ArgumentNullException))]
     public void Costruttore_NumeroENullEmailNull_LanciaArgumentNullException()
     {
-        var codiceFiscale = new CodiceFiscale("RSSMRA80A01H501U");
+        var codiceFiscale = new TaxId("RSSMRA80A01H501U");
         var _ = new Adottante("Mario", "Rossi", null, null, codiceFiscale);
     }
 
@@ -57,7 +57,7 @@ public class AdottanteTest
     public void Costruttore_NumeroNull_LanciaArgumentNullException()
     {
         var email = new Email("test@email.com");
-        var codiceFiscale = new CodiceFiscale("RSSMRA80A01H501U");
+        var codiceFiscale = new TaxId("RSSMRA80A01H501U");
 
         var _ = new Adottante("Mario", "Rossi", null, email, codiceFiscale);
     }
@@ -67,7 +67,7 @@ public class AdottanteTest
     public void Costruttore_EmailNull_LanciaArgumentNullException()
     {
         var telefono = new PhoneNumber("3331234567");
-        var codiceFiscale = new CodiceFiscale("RSSMRA80A01H501U");
+        var codiceFiscale = new TaxId("RSSMRA80A01H501U");
 
         var _ = new Adottante("Mario", "Rossi", telefono, null, codiceFiscale);
     }
@@ -87,7 +87,7 @@ public class AdottanteTest
     {
         var telefono = new PhoneNumber("3331234567");
         var email = new Email("test@email.com");
-        var codiceFiscale = new CodiceFiscale("RSSMRA80A01H501U");
+        var codiceFiscale = new TaxId("RSSMRA80A01H501U");
         var adottante = new Adottante("Mario", "Rossi", telefono, email, codiceFiscale);
 
         Assert.AreEqual("Mario Rossi", adottante.ToString());
