@@ -1,7 +1,7 @@
-﻿<Window x:Class="GattileUI.FinestraNuovaAdozione"
+﻿<Window x:Class="GattileUI.NewAdoptionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Nuova Adozione" Height="350" Width="400">
+        Title="New Adoption" Height="350" Width="400">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -10,13 +10,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Label Content="Gatto:" Width="80"/>
-            <ComboBox x:Name="cmbGatto" Width="200" DisplayMemberPath="Nome"/>
+            <Label Content="Cat:" Width="80"/>
+            <ComboBox x:Name="cmbCat" Width="200" DisplayMemberPath="Name"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <Label Content="Adottante:" Width="80"/>
-            <ComboBox x:Name="cmbAdottante" Width="200"/>
+            <Label Content="Adopter:" Width="80"/>
+            <ComboBox x:Name="cmbAdopter" Width="200"/>
         </StackPanel>
-        <Button Content="Registra" Grid.Row="2" Width="100" Margin="0,10,0,0" HorizontalAlignment="Left" Click="btnRegistra_Click"/>
+        <Button Content="Register" Grid.Row="2" Width="100" Margin="0,10,0,0" HorizontalAlignment="Left" Click="btnRegister_Click"/>
     </Grid>
 </Window>
+
