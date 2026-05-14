@@ -1,0 +1,11 @@
+.color-head{
+    background-color: black;
+}
+.lista-custom li:nth-child(even) {
+    background-color: #000000;
+    color: white;
+}
+.link {
+    color: white;
+    text-decoration: none;
+}
