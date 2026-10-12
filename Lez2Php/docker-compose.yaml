@@ -1,0 +1,8 @@
+services:
+  web:
+    image: php:8.2-apache
+    container_name: lez2php
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
