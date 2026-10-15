@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "titolo": "PC non si accende",
+    "descrizione": "Il computer della postazione 3 non dà segni di vita dopo il temporale.",
+    "autore": "Mario Rossi",
+    "data": "2026-07-20"
+  },
+  {
+    "id": 2,
+    "titolo": "Richiesta aggiornamento VS Code",
+    "descrizione": "Serve aggiornare l'ambiente di sviluppo per supportare PHP 8.2.",
+    "autore": "Laura Bianchi",
+    "data": "2026-07-21"
+  },
+  {
+    "id": 3,
+    "titolo": "Accesso alla rete Wi-Fi Lab",
+    "descrizione": "Richiesta credenziali per i nuovi studenti del corso.",
+    "autore": "Giuseppe Verdi",
+    "data": "2026-07-21"
+  }
+]
